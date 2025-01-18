@@ -76,7 +76,10 @@
                         {{ $loop->iteration }}
                     </th>
                     <td class="px-6 py-4">
-                        {{ $item->no_perkara }}
+                        @php
+                            $a = App\Models\ModelPerkara::where('id_perkara', $item->id_perkara)->first();
+                        @endphp
+                        {{ $a->no_perkara }}
                     </td>
                     <td class="px-6 py-4">
                         @php
