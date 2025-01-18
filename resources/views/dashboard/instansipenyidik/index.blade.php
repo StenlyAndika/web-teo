@@ -12,7 +12,7 @@
         Data Baru
     </button>
 
-    @include('dashboard.jaksa.add')
+    @include('dashboard.instansipenyidik.add')
 
     @if (session('toast_success'))
         <div id="alertDialog"
@@ -38,16 +38,7 @@
                     No
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Nama
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Alamat
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Email
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    No Telp
+                    Nama Instansi Penyidik
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Opsi
@@ -55,7 +46,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($jaksa as $item)
+            @foreach ($instansi as $item)
                 <tr class="odd:bg-white even:bg-gray-50 border-b">
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                         {{ $loop->iteration }}
@@ -63,30 +54,21 @@
                     <td class="px-6 py-4">
                         {{ $item->nama }}
                     </td>
-                    <td class="px-6 py-4">
-                        {{ $item->alamat }}
-                    </td>
-                    <td class="px-6 py-4">
-                        {{ $item->email }}
-                    </td>
-                    <td class="px-6 py-4">
-                        {{ $item->no_telp }}
-                    </td>
                     <td class="flex justify-start space-x-2">
-                        <button data-modal-target="popup-edit-{{ $item->id_jaksa }}"
-                            data-modal-toggle="popup-edit-{{ $item->id_jaksa }}"
+                        <button data-modal-target="popup-edit-{{ $item->id_instansi_penyidik }}"
+                            data-modal-toggle="popup-edit-{{ $item->id_instansi_penyidik }}"
                             class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold rounded-lg text-sm px-5 py-2.5 text-center"
                             type="button">
                             Edit
                         </button>
-                        @include('dashboard.jaksa.show')
-                        <button data-modal-target="popup-delete-{{ $item->id_jaksa }}"
-                            data-modal-toggle="popup-delete-{{ $item->id_jaksa }}"
+                        @include('dashboard.instansipenyidik.show')
+                        <button data-modal-target="popup-delete-{{ $item->id_instansi_penyidik }}"
+                            data-modal-toggle="popup-delete-{{ $item->id_instansi_penyidik }}"
                             class="block text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold rounded-lg text-sm px-5 py-2.5 text-center"
                             type="button">
                             Hapus
                         </button>
-                        @include('dashboard.jaksa.delete')
+                        @include('dashboard.instansipenyidik.delete')
                     </td>
                 </tr>
             @endforeach

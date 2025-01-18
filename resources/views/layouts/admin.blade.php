@@ -21,7 +21,7 @@
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@9.0.3"></script>
     <script>
-        const dataTable = new simpleDatatables.DataTable("#search-table");
+        if (document.getElementById('search-table')) new simpleDatatables.DataTable('#search-table');
 
         setTimeout(function() {
             const alertDialog = document.getElementById('alertDialog');

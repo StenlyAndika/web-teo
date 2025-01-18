@@ -26,15 +26,9 @@ class="hidden overflow-y-auto overflow-x-hidden fixed right-0 left-0 z-50 justif
             @method('put')
             @csrf
             <div class="flex mb-4">
-                <label for="nama_jaksa" class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300 w-40">Nama Jaksa</label>
+                <label for="nama" class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300 w-40">Nama Jaksa</label>
                 <div class="relative w-full">
-                    <input type="text" class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-e-lg rounded-s-gray-100 rounded-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500" id="nama_jaksa" name="nama_jaksa" value="{{ $item->nama_jaksa }}" required/>
-                </div>
-            </div>
-            <div class="flex mb-4">
-                <label for="no_telp" class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300 w-40">No Telp</label>
-                <div class="relative w-full">
-                    <input type="text" class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-e-lg rounded-s-gray-100 rounded-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500" id="no_telp" name="no_telp" value="{{ $item->no_telp }}" required/>
+                    <input type="text" class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-e-lg rounded-s-gray-100 rounded-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500" id="nama" name="nama" value="{{ $item->nama }}" required/>
                 </div>
             </div>
             <div class="flex mb-4">
@@ -47,6 +41,12 @@ class="hidden overflow-y-auto overflow-x-hidden fixed right-0 left-0 z-50 justif
                 <label for="email" class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300 w-40">Email</label>
                 <div class="relative w-full">
                     <input type="email" class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-e-lg rounded-s-gray-100 rounded-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500" id="email" name="email" value="{{ $item->email }}" required/>
+                </div>
+            </div>
+            <div class="flex mb-4">
+                <label for="notelp" class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300 w-40">No Telp</label>
+                <div class="relative w-full">
+                    <input type="text" class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-e-lg rounded-s-gray-100 rounded-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500" id="notelp" name="notelp" value="{{ $item->notelp }}" required/>
                 </div>
             </div>
             <button type="submit"

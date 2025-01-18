@@ -14,7 +14,7 @@ class JaksaController extends Controller
     {
         return view('dashboard.jaksa.index', [
             'title' => 'Data Jaksa',
-            'kategori' => ModelJaksa::all()
+            'jaksa' => ModelJaksa::all()
         ]);
     }
 
@@ -24,10 +24,10 @@ class JaksaController extends Controller
     public function store(Request $request)
     {
         $rules = [
-            'nama_jaksa' => 'required',
-            'no_telp' => 'required',
+            'nama' => 'required',
             'alamat' => 'required',
-            'email' => 'required'
+            'email' => 'required',
+            'notelp' => 'required'
         ];
 
         $validatedData = $request->validate($rules);
@@ -43,10 +43,10 @@ class JaksaController extends Controller
     public function update(Request $request, string $id)
     {
         $rules = [
-            'nama_jaksa' => 'required',
-            'no_telp' => 'required',
+            'nama' => 'required',
             'alamat' => 'required',
-            'email' => 'required'
+            'email' => 'required',
+            'notelp' => 'required'
         ];
 
         $validatedData = $request->validate($rules);

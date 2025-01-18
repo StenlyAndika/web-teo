@@ -6,13 +6,7 @@
         <h1 class="text-2xl font-semibold text-gray-900">{{ $title }}</h1>
     </div>
 
-    <button data-modal-target="default-modal" data-modal-toggle="default-modal"
-        class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold rounded-lg text-sm px-5 py-2.5 text-center mt-2 mb-4"
-        type="button">
-        Data Baru
-    </button>
-
-    @include('dashboard.jaksa.add')
+    <a href="{{ route('admin.penerimaanspdp.create') }}" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold rounded-lg text-sm px-5 py-2.5 text-center mt-2 mb-4 w-40">Tambah SPDP</a>
 
     @if (session('toast_success'))
         <div id="alertDialog"
@@ -38,16 +32,19 @@
                     No
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Nama
+                    Asal SPDP, Nomor dan Tanggal
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Alamat
+                    Tempat dan Tanggal Kejadian
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Email
+                    Melanggar UU dan Pasal
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    No Telp
+                    Tersangka
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Status
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Opsi
@@ -55,7 +52,16 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($jaksa as $item)
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            {{-- @foreach ($instansi as $item)
                 <tr class="odd:bg-white even:bg-gray-50 border-b">
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                         {{ $loop->iteration }}
@@ -63,33 +69,24 @@
                     <td class="px-6 py-4">
                         {{ $item->nama }}
                     </td>
-                    <td class="px-6 py-4">
-                        {{ $item->alamat }}
-                    </td>
-                    <td class="px-6 py-4">
-                        {{ $item->email }}
-                    </td>
-                    <td class="px-6 py-4">
-                        {{ $item->no_telp }}
-                    </td>
                     <td class="flex justify-start space-x-2">
-                        <button data-modal-target="popup-edit-{{ $item->id_jaksa }}"
-                            data-modal-toggle="popup-edit-{{ $item->id_jaksa }}"
+                        <button data-modal-target="popup-edit-{{ $item->id_instansi_pelaksana }}"
+                            data-modal-toggle="popup-edit-{{ $item->id_instansi_pelaksana }}"
                             class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold rounded-lg text-sm px-5 py-2.5 text-center"
                             type="button">
                             Edit
                         </button>
-                        @include('dashboard.jaksa.show')
-                        <button data-modal-target="popup-delete-{{ $item->id_jaksa }}"
-                            data-modal-toggle="popup-delete-{{ $item->id_jaksa }}"
+                        @include('dashboard.instansipelaksana.show')
+                        <button data-modal-target="popup-delete-{{ $item->id_instansi_pelaksana }}"
+                            data-modal-toggle="popup-delete-{{ $item->id_instansi_pelaksana }}"
                             class="block text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold rounded-lg text-sm px-5 py-2.5 text-center"
                             type="button">
                             Hapus
                         </button>
-                        @include('dashboard.jaksa.delete')
+                        @include('dashboard.instansipelaksana.delete')
                     </td>
                 </tr>
-            @endforeach
+            @endforeach --}}
         </tbody>
     </table>
 @endsection
