@@ -1,12 +1,13 @@
 @extends('layouts.admin')
 
 @section('container')
-    <div id="sticky-banner" tabindex="-1"
-        class="top-0 start-0 z-50 flex justify-between w-full p-4 border-b border-gray-200">
+    <div id="sticky-banner" tabindex="-1" class="top-0 start-0 z-50 flex justify-between w-full p-4 border-b border-gray-200">
         <h1 class="text-2xl font-semibold text-gray-900">{{ $title }}</h1>
     </div>
 
-    <a href="{{ route('admin.penerimaanspdp.create') }}" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold rounded-lg text-sm px-5 py-2.5 text-center mt-2 mb-4 w-40">Tambah SPDP</a>
+    <a href="{{ route('admin.penerimaanspdp.create') }}"
+        class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold rounded-lg text-sm px-5 py-2.5 text-center mt-2 mb-4 w-40">Tambah
+        SPDP</a>
 
     @if (session('toast_success'))
         <div id="alertDialog"
@@ -43,50 +44,58 @@
                 <th scope="col" class="px-6 py-3">
                     Tersangka
                 </th>
-                <th scope="col" class="px-6 py-3">
+                {{-- <th scope="col" class="px-6 py-3">
                     Status
-                </th>
+                </th> --}}
                 <th scope="col" class="px-6 py-3">
                     Opsi
                 </th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            {{-- @foreach ($instansi as $item)
+            @foreach ($penerimaanspdp as $item)
                 <tr class="odd:bg-white even:bg-gray-50 border-b">
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                         {{ $loop->iteration }}
                     </th>
                     <td class="px-6 py-4">
-                        {{ $item->nama }}
+                        @php
+                            $a = App\Models\ModelInstansiPelaksana::where(
+                                'id_instansi_pelaksana',
+                                $item->id_instansi_pelaksana,
+                            )->first();
+                        @endphp
+                        {{ $a->nama }}<br>
+                        {{ $item->no_spdp . ' ' . Carbon\Carbon::parse($item->tgl_spdp)->format('d-m-Y') }}<br>
+                        Diterima SPDP : {{ Carbon\Carbon::parse($item->tgl_diterima)->format('d-m-Y') }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ $item->tempat_kejadian_perkara }}<br>
+                        {{ '[' . $item->waktu_kejadian . ']' . ' ' . Carbon\Carbon::parse($item->tgl_kejadian)->format('d-m-Y') }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ $item->undang_undang_dan_pasal }}
+                    </td>
+                    <td class="px-6 py-4">
+                        @php
+                            $ab = App\Models\ModelTersangka::where(
+                                'id_penerimaan_spdp',
+                                $item->id_penerimaan_spdp,
+                            )->first();
+                        @endphp
+                        {{ $ab->nama }}<br>
                     </td>
                     <td class="flex justify-start space-x-2">
-                        <button data-modal-target="popup-edit-{{ $item->id_instansi_pelaksana }}"
-                            data-modal-toggle="popup-edit-{{ $item->id_instansi_pelaksana }}"
-                            class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold rounded-lg text-sm px-5 py-2.5 text-center"
-                            type="button">
-                            Edit
-                        </button>
-                        @include('dashboard.instansipelaksana.show')
-                        <button data-modal-target="popup-delete-{{ $item->id_instansi_pelaksana }}"
-                            data-modal-toggle="popup-delete-{{ $item->id_instansi_pelaksana }}"
+                        <button data-modal-target="popup-delete-{{ $item->id_penerimaan_spdp }}"
+                            data-modal-toggle="popup-delete-{{ $item->id_penerimaan_spdp }}"
                             class="block text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold rounded-lg text-sm px-5 py-2.5 text-center"
                             type="button">
                             Hapus
                         </button>
-                        @include('dashboard.instansipelaksana.delete')
+                        @include('dashboard.penerimaanspdp.delete')
                     </td>
                 </tr>
-            @endforeach --}}
+            @endforeach
         </tbody>
     </table>
 @endsection

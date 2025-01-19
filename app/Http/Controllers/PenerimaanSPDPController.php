@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\ModelTersangka;
 use App\Models\ModelPenerimaanSPDP;
 use App\Models\ModelInstansiPenyidik;
 use App\Models\ModelInstansiPelaksana;
@@ -14,6 +15,7 @@ class PenerimaanSPDPController extends Controller
      */
     public function index()
     {
+        session()->forget('temp_tersangka');
         return view('dashboard.penerimaanspdp.index', [
             'title' => 'Pemberitahuan Dimulainya Penyidikan',
             'penerimaanspdp' => ModelPenerimaanSPDP::all()
@@ -47,6 +49,18 @@ class PenerimaanSPDPController extends Controller
         ]);
     }
 
+    public function temptersangkastore(Request $request) {
+
+        $tempTersangka = session('temp_tersangka', []);
+
+        $newData = $request->all();
+        $tempTersangka = array_merge($tempTersangka, array_filter($newData));
+
+        session(['temp_tersangka' => $tempTersangka]);
+
+        return response()->json(['success' => true]);
+    }
+
     /**
      * Store a newly created resource in storage.
      */
@@ -68,7 +82,7 @@ class PenerimaanSPDPController extends Controller
             'undang_undang_dan_pasal' => 'required',
             'jenis_pidana' => 'required',
             'jenis_perkara' => 'required',
-            'berkas_spdp' => 'required|image|max:2048'
+            'berkas_spdp' => 'file|mimes:pdf'
         ];
 
         // try {
@@ -84,14 +98,24 @@ class PenerimaanSPDPController extends Controller
         $validatedData['tgl_diterima'] = date('Y-m-d', strtotime($validatedData['tgl_diterima']));
         $validatedData['tgl_kejadian'] = date('Y-m-d', strtotime($validatedData['tgl_kejadian']));
 
-        $filePath = $request->file('berkas_spdp')->store('upload/berkas_spdp');
-        \Log::info('File stored at: ' . $filePath);
+        // $filePath = $request->file('berkas_spdp')->store('upload/berkas_spdp');
+        // \Log::info('File stored at: ' . $filePath);
 
         if ($request->file('berkas_spdp')) {
             $validatedData['berkas_spdp'] = $request->file('berkas_spdp')->store('upload/berkas_spdp');
         }
 
-        ModelPenerimaanSPDP::create($validatedData);
+        $newRecord = ModelPenerimaanSPDP::create($validatedData);
+
+        $tempTersangka = session('temp_tersangka');
+        $validatedDataTersangka['id_penerimaan_spdp'] = $newRecord->id_penerimaan_spdp;
+        $validatedDataTersangka['nama'] = $tempTersangka['nama'];
+        $validatedDataTersangka['alamat'] = $tempTersangka['alamat'];
+        $validatedDataTersangka['tempat_lahir'] = $tempTersangka['tempat_lahir'];
+        $validatedDataTersangka['tgl_lahir'] = $tempTersangka['tgl_lahir'];
+
+
+        ModelTersangka::create($validatedDataTersangka);
 
         return redirect()->route('admin.penerimaanspdp.index')->with('toast_success', 'Data berhasil ditambah!');
     }
@@ -101,6 +125,8 @@ class PenerimaanSPDPController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        ModelPenerimaanSPDP::where('id_penerimaan_spdp', $id)->delete();
+        ModelTersangka::where('id_penerimaan_spdp', $id)->delete();
+        return redirect()->route('admin.penerimaanspdp.index')->with('toast_success', 'Data berhasil dihapus!');
     }
 }

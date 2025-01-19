@@ -20,6 +20,7 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@9.0.3"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script>
         if (document.getElementById('search-table')) new simpleDatatables.DataTable('#search-table');
 
@@ -29,6 +30,23 @@
                 alertDialog.style.display = 'none';
             }
         }, 3000);
+
+        $('#form-tersangka').on('submit', function(e) {
+            e.preventDefault();
+
+            $.ajax({
+                type: 'POST',
+                url: $(this).attr('action'),
+                data: $(this).serialize(),
+                success: function(response) {
+                    $('[data-modal-hide="default-modal-tersangka"]').click();
+                    $('#tersangkaContainer').load(location.href + ' #tersangkaContainer');
+                },
+                error: function(response) {
+                    alert('An error on objective occurred. Please try again.');
+                }
+            });
+        });
     </script>
 </body>
 

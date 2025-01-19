@@ -44,6 +44,9 @@ Route::delete('/admin/master/wilayahpelimpahan/{id}', [WilayahPelimpahanControll
 Route::get('/admin/prapenuntutan/penerimaanspdp', [PenerimaanSPDPController::class, 'index'])->name('admin.penerimaanspdp.index');
 Route::get('/admin/prapenuntutan/penerimaanspdp/create', [PenerimaanSPDPController::class, 'create'])->name('admin.penerimaanspdp.create');
 Route::post('/admin/prapenuntutan/penerimaanspdp', [PenerimaanSPDPController::class, 'store'])->name('admin.penerimaanspdp.store');
+Route::post('/admin/temptersangka', [PenerimaanSPDPController::class, 'temptersangkastore'])->name('admin.temptersangka.store');
+Route::delete('/admin/prapenuntutan/penerimaanspdp/{id}', [PenerimaanSPDPController::class, 'destroy'])->name('admin.penerimaanspdp.destroy');
+
 
 // Route::get('/admin/perkara', [PerkaraController::class, 'index'])->name('admin.perkara.index');
 // Route::post('/admin/perkara', [PerkaraController::class, 'store'])->name('admin.perkara.store');

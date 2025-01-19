@@ -23,7 +23,6 @@ class="hidden overflow-y-auto overflow-x-hidden fixed right-0 left-0 z-50 justif
         </div>
         <!-- Modal body -->
         <form method="post" action="{{ route('admin.wilayahpelimpahan.store') }}" autocomplete="off">
-            @method('post')
             @csrf
             <div class="flex mb-4">
                 <label for="nama" class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300 w-50">Nama Wilayah Pelimpahan</label>
