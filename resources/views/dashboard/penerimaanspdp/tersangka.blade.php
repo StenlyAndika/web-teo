@@ -44,6 +44,17 @@
                     </div>
                 </div>
                 <div class="flex mb-4">
+                    <label for="jekel"
+                        class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300 w-40">Jenis
+                        Kelamin</label>
+                    <select id="jekel" name="jekel"
+                        class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-e-lg rounded-s-gray-100 rounded-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500">
+                        <option selected>-- Pilih --</option>
+                        <option value="Laki-laki" @if (session('temp_tersangka.jekel') == 'Laki-laki') selected @endif>Laki-laki</option>
+                        <option value="Perempuan" @if (session('temp_tersangka.jekel') == 'Perempuan') selected @endif>Perempuan</option>
+                    </select>
+                </div>
+                <div class="flex mb-4">
                     <label for="tempat_lahir"
                         class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300 w-40">Tempat
                         Lahir</label>
@@ -73,6 +84,28 @@
                             </svg>
                         </span>
                     </div>
+                </div>
+                <div class="flex mb-4">
+                    <label for="agama"
+                        class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300 w-40">Agama</label>
+                    <select id="agama" name="agama"
+                        class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-e-lg rounded-s-gray-100 rounded-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500">
+                        <option selected>-- Pilih --</option>
+                        @foreach ($agama as $item)
+                            <option value="{{ $item }}" @if (session('temp_tersangka.agama') == $item) selected @endif>{{ $item }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="flex mb-4">
+                    <label for="pekerjaan"
+                        class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300 w-40">Pekerjaan</label>
+                    <select id="pekerjaan" name="pekerjaan"
+                        class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-e-lg rounded-s-gray-100 rounded-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500">
+                        <option selected>-- Pilih --</option>
+                        @foreach ($pekerjaan as $item2)
+                            <option value="{{ $item2 }}" @if (session('temp_tersangka.agama') == $item2) selected @endif>{{ $item2 }}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="flex space-x-1">
                     <button type="submit"

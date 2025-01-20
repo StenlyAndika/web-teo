@@ -8,17 +8,15 @@ use App\Models\ModelPenerimaanSPDP;
 use App\Models\ModelInstansiPenyidik;
 use App\Models\ModelInstansiPelaksana;
 
-class PenerimaanSPDPController extends Controller
+class PenerimaanBerkasTIController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        session()->forget('temp_tersangka');
-        return view('dashboard.penerimaanspdp.index', [
-            'title' => 'Pemberitahuan Dimulainya Penyidikan',
-            'penerimaanspdp' => ModelPenerimaanSPDP::all()
+        return view('dashboard.penerimaanberkasperkara.index', [
+            'title' => 'Penerimaan Berkas Perkara Tahap I'
         ]);
     }
 
@@ -27,45 +25,19 @@ class PenerimaanSPDPController extends Controller
      */
     public function create()
     {
-        $jenispidana = [
-            'Pidana Umum',
-            'Pidana Khusus',
-            'Pidana Militer'
-        ];
+        return view('dashboard.penerimaanberkasperkara.add', [
+            'title' => 'Penerimaan Berkas Perkara Tahap I',
+            'penerimaanspdp' => ModelPenerimaanSPDP::all()
+        ]);
+    }
 
-        $jenisperkara = [
-            'Tindak Pidana Korupsi',
-            'Tindak Pidana Narkotika',
-            'Tindak Pidana Pencucian Uang'
-        ];
-
-        $agama = [
-            'Islam',
-            'Kristen',
-            'Katolik',
-            'Hindu',
-            'Budha',
-            'Konghucu'
-        ];
-
-        $pekerjaan = [
-            'PNS',
-            'Wiraswasta',
-            'Petani',
-            'Cacing',
-            'Pedagang',
-            'Lainnya'
-        ];
-
-        return view('dashboard.penerimaanspdp.add', [
-            'title' => 'Tambah SPDP',
-            'subtitle' => 'Pemberitahuan Dimulainya Penyidikan',
-            'instansipenyidik' => ModelInstansiPenyidik::all(),
-            'instansipelaksana' => ModelInstansiPelaksana::all(),
-            'jenispidana' => $jenispidana,
-            'jenisperkara' => $jenisperkara,
-            'agama' => $agama,
-            'pekerjaan' => $pekerjaan
+    public function data_spdp($index)
+    {
+        $dataspdp = ModelPenerimaanSPDP::where('id_penerimaan_spdp', $index)->first();
+        return view('dashboard.penerimaanberkasperkara.dataspdp', [
+            'dataspdp' => $dataspdp,
+            'penyidik' => ModelInstansiPenyidik::where('id_instansi_penyidik', $dataspdp->id_instansi_penyidik)->first(),
+            'tersangka' => ModelTersangka::where('id_penerimaan_spdp', $dataspdp->id_penerimaan_spdp)->first()
         ]);
     }
 

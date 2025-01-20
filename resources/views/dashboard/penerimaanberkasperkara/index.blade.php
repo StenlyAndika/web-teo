@@ -5,9 +5,8 @@
         <h1 class="text-2xl font-semibold text-gray-900">{{ $title }}</h1>
     </div>
 
-    <a href="{{ route('admin.penspdp.create') }}"
-        class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold rounded-lg text-sm px-5 py-2.5 text-center mt-2 mb-4 w-40">Tambah
-        SPDP</a>
+    <a href="{{ route('admin.penbt1.create') }}"
+        class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold rounded-lg text-sm px-5 py-2.5 text-center mt-2 mb-4 w-40">Tambah</a>
 
     @if (session('toast_success'))
         <div id="alertDialog"
@@ -33,27 +32,24 @@
                     No
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Asal SPDP, Nomor dan Tanggal
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Tempat dan Tanggal Kejadian
+                    Asal, No & Tgl Berkas, No & Tgl Penyerahan
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Melanggar UU dan Pasal
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Tersangka
+                    P16 Nomor dan Tanggal, Jaksa Peneliti
                 </th>
-                {{-- <th scope="col" class="px-6 py-3">
-                    Status
-                </th> --}}
+                <th scope="col" class="px-6 py-3">
+                    Nama Tersangka
+                </th>
                 <th scope="col" class="px-6 py-3">
                     Opsi
                 </th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($penerimaanspdp as $item)
+            {{-- @foreach ($penerimaanspdp as $item)
                 <tr class="odd:bg-white even:bg-gray-50 border-b">
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                         {{ $loop->iteration }}
@@ -95,7 +91,7 @@
                         @include('dashboard.penerimaanspdp.delete')
                     </td>
                 </tr>
-            @endforeach
+            @endforeach --}}
         </tbody>
     </table>
 @endsection

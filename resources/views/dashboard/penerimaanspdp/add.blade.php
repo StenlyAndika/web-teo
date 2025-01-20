@@ -8,7 +8,7 @@
         <h5 class="text-gray-500">&nbsp;Surat {{ $subtitle }}</h5>
     </div>
     <div class="mt-2">
-        <form method="post" action="{{ route('admin.penerimaanspdp.store') }}" enctype="multipart/form-data"
+        <form method="post" action="{{ route('admin.penspdp.store') }}" enctype="multipart/form-data"
             autocomplete="off">
             @csrf
             <div class="grid gap-6 mb-4 md:grid-cols-2">
@@ -291,7 +291,7 @@
                     class="text-white bg-blue-700 hover:bg-blue-800 font-bold rounded-lg text-sm px-5 py-2.5">
                     Simpan
                 </button>
-                <a href="{{ route('admin.penerimaanspdp.index') }}"
+                <a href="{{ route('admin.penspdp.index') }}"
                     class="text-white bg-red-700 hover:bg-red-800 font-bold rounded-lg text-sm px-5 py-2.5">Batal</a>
             </div>
         </form>

@@ -7,6 +7,7 @@ use App\Http\Controllers\PenerimaanSPDPController;
 use App\Http\Controllers\InstansiPenyidikController;
 use App\Http\Controllers\InstansiPelaksanaController;
 use App\Http\Controllers\WilayahPelimpahanController;
+use App\Http\Controllers\PenerimaanBerkasTIController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,16 +42,12 @@ Route::post('/admin/master/wilayahpelimpahan', [WilayahPelimpahanController::cla
 Route::put('/admin/master/wilayahpelimpahan/{id}', [WilayahPelimpahanController::class, 'update'])->name('admin.wilayahpelimpahan.update');
 Route::delete('/admin/master/wilayahpelimpahan/{id}', [WilayahPelimpahanController::class, 'destroy'])->name('admin.wilayahpelimpahan.destroy');
 
-Route::get('/admin/prapenuntutan/penerimaanspdp', [PenerimaanSPDPController::class, 'index'])->name('admin.penerimaanspdp.index');
-Route::get('/admin/prapenuntutan/penerimaanspdp/create', [PenerimaanSPDPController::class, 'create'])->name('admin.penerimaanspdp.create');
-Route::post('/admin/prapenuntutan/penerimaanspdp', [PenerimaanSPDPController::class, 'store'])->name('admin.penerimaanspdp.store');
+Route::get('/admin/prapen/penspdp', [PenerimaanSPDPController::class, 'index'])->name('admin.penspdp.index');
+Route::get('/admin/prapen/penspdp/create', [PenerimaanSPDPController::class, 'create'])->name('admin.penspdp.create');
+Route::post('/admin/prapen/penspdp', [PenerimaanSPDPController::class, 'store'])->name('admin.penspdp.store');
 Route::post('/admin/temptersangka', [PenerimaanSPDPController::class, 'temptersangkastore'])->name('admin.temptersangka.store');
-Route::delete('/admin/prapenuntutan/penerimaanspdp/{id}', [PenerimaanSPDPController::class, 'destroy'])->name('admin.penerimaanspdp.destroy');
+Route::delete('/admin/prapen/penspdp/{id}', [PenerimaanSPDPController::class, 'destroy'])->name('admin.penspdp.destroy');
 
-
-// Route::get('/admin/perkara', [PerkaraController::class, 'index'])->name('admin.perkara.index');
-// Route::post('/admin/perkara', [PerkaraController::class, 'store'])->name('admin.perkara.store');
-// Route::put('/admin/perkara/{id}', [PerkaraController::class, 'update'])->name('admin.perkara.update');
-// Route::delete('/admin/perkara/{id}', [PerkaraController::class, 'destroy'])->name('admin.perkara.destroy');
-// Route::get('/admin/laporan/perkara', [PerkaraController::class, 'laporan'])->name('admin.perkara.laporan');
-// Route::get('/admin/laporan/perkara/print/{bln}', [PerkaraController::class, 'print'])->name('admin.perkara.print');
+Route::get('/admin/prapen/penbt1', [PenerimaanBerkasTIController::class, 'index'])->name('admin.penbt1.index');
+Route::get('/admin/prapen/penbt1/create', [PenerimaanBerkasTIController::class, 'create'])->name('admin.penbt1.create');
+Route::get('/data-spdp/{index}', [PenerimaanBerkasTIController::class, 'data_spdp'])->name('data_spdp');

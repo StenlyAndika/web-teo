@@ -16,8 +16,11 @@ return new class extends Migration
             $table->integer('id_penerimaan_spdp');
             $table->text('nama');
             $table->text('alamat');
+            $table->text('jekel');
             $table->text('tempat_lahir');
             $table->date('tgl_lahir');
+            $table->text('agama');
+            $table->text('pekerjaan');
         });
     }
 

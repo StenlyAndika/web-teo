@@ -22,7 +22,9 @@
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@9.0.3"></script>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script>
-        if (document.getElementById('search-table')) new simpleDatatables.DataTable('#search-table');
+        if (document.getElementById('search-table')) new simpleDatatables.DataTable('#search-table', {
+            searchable: true
+        });
 
         setTimeout(function() {
             const alertDialog = document.getElementById('alertDialog');
@@ -44,6 +46,24 @@
                 },
                 error: function(response) {
                     alert('An error on objective occurred. Please try again.');
+                }
+            });
+        });
+
+        $('#id_instansi_penyidik_cari').on('change', function() {
+
+            let id = $(this).val();
+
+            let containerSPDP = $('.spdp-container');
+            containerSPDP.html("");
+
+            $.ajax({
+                url: "{{ url('data-spdp') }}/" + id,
+                type: "GET",
+                success: function(response) {
+                    containerSPDP.append(response);
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
                 }
             });
         });
