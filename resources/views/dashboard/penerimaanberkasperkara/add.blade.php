@@ -35,7 +35,7 @@
                     Tambah Jaksa Penuntut Umum
                 </button>
                 <div id="jaksaContainer">
-                    @if (!empty(session('temp_jaksa_data')[1]['nama']))
+                    @if (!empty(session('temp_jaksa_data')))
                         <button
                             class="block flex text-blue-800 border border-blue-300 rounded-lg bg-blue-100 font-semibold text-sm px-5 py-2.5 text-center">
                             Data jaksa penuntut umum sudah dipilih&nbsp;
