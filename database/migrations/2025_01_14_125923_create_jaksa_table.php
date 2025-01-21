@@ -13,10 +13,12 @@ return new class extends Migration
     {
         Schema::create('jaksa', function (Blueprint $table) {
             $table->integer('id_jaksa')->autoIncrement();
+            $table->text('nip');
             $table->text('nama');
             $table->text('alamat');
             $table->text('email');
             $table->text('notelp');
+            $table->text('pangkat');
         });
     }
 

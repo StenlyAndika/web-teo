@@ -51,3 +51,7 @@ Route::delete('/admin/prapen/penspdp/{id}', [PenerimaanSPDPController::class, 'd
 Route::get('/admin/prapen/penbt1', [PenerimaanBerkasTIController::class, 'index'])->name('admin.penbt1.index');
 Route::get('/admin/prapen/penbt1/create', [PenerimaanBerkasTIController::class, 'create'])->name('admin.penbt1.create');
 Route::get('/data-spdp/{index}', [PenerimaanBerkasTIController::class, 'data_spdp'])->name('data_spdp');
+Route::get('/data-jaksa', [PenerimaanBerkasTIController::class, 'data_jaksa'])->name('data_jaksa');
+Route::get('/get-temp-jaksa', [PenerimaanBerkasTIController::class, 'get_temp_jaksa'])->name('get_temp_jaksa');
+Route::post('/set-temp-jaksa', [PenerimaanBerkasTIController::class, 'set_temp_jaksa'])->name('set_temp_jaksa');
+Route::delete('/delete-temp-jaksa/{id}', [PenerimaanBerkasTIController::class, 'delete_temp_jaksa']);

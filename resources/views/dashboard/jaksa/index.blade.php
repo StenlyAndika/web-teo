@@ -19,7 +19,7 @@
             class="flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-green-100 rounded-lg shadow fixed bottom-5 right-5"
             role="alert">
             <div
-                class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200">
+                class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg">
                 <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                     viewBox="0 0 20 20">
                     <path
@@ -38,7 +38,13 @@
                     No
                 </th>
                 <th scope="col" class="px-6 py-3">
+                    Nip
+                </th>
+                <th scope="col" class="px-6 py-3">
                     Nama
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Pangkat
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Alamat
@@ -61,7 +67,13 @@
                         {{ $loop->iteration }}
                     </th>
                     <td class="px-6 py-4">
+                        {{ $item->nip }}
+                    </td>
+                    <td class="px-6 py-4">
                         {{ $item->nama }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ $item->pangkat }}
                     </td>
                     <td class="px-6 py-4">
                         {{ $item->alamat }}
@@ -70,7 +82,7 @@
                         {{ $item->email }}
                     </td>
                     <td class="px-6 py-4">
-                        {{ $item->no_telp }}
+                        {{ $item->notelp }}
                     </td>
                     <td class="flex justify-start space-x-2">
                         <button data-modal-target="popup-edit-{{ $item->id_jaksa }}"

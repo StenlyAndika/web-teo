@@ -57,8 +57,8 @@
                             class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-s-gray-100 rounded-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
                             placeholder="yyyy-mm-dd" name="tgl_sprindik" value="{{ old('tgl_sprindik') }}" required>
                         <span
-                            class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border rounded-s-0 border-s-0 border-gray-300 rounded-e-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
-                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                            class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border rounded-s-0 border-s-0 border-gray-300 rounded-e-md">
+                            <svg class="w-4 h-4 text-gray-500" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
                                 <path fill-rule="evenodd"
                                     d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"
@@ -88,8 +88,8 @@
                             class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-s-gray-100 rounded-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
                             placeholder="yyyy-mm-dd" name="tgl_spdp" value="{{ old('tgl_spdp') }}" required>
                         <span
-                            class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border rounded-s-0 border-s-0 border-gray-300 rounded-e-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
-                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                            class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border rounded-s-0 border-s-0 border-gray-300 rounded-e-md">
+                            <svg class="w-4 h-4 text-gray-500" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
                                 <path fill-rule="evenodd"
                                     d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"
@@ -120,8 +120,8 @@
                             class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-s-gray-100 rounded-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
                             placeholder="yyyy-mm-dd" name="tgl_diterima" value="{{ old('tgl_diterima') }}" required>
                         <span
-                            class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border rounded-s-0 border-s-0 border-gray-300 rounded-e-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
-                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                            class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border rounded-s-0 border-s-0 border-gray-300 rounded-e-md">
+                            <svg class="w-4 h-4 text-gray-500" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
                                 <path fill-rule="evenodd"
                                     d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"
@@ -141,8 +141,8 @@
                             class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-s-gray-100 rounded-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
                             id="waktu_kejadian" name="waktu_kejadian" value="{{ old('waktu_kejadian') }}" required />
                         <span
-                            class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border rounded-s-0 border-s-0 border-gray-300 rounded-e-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
-                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                            class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border rounded-s-0 border-s-0 border-gray-300 rounded-e-md">
+                            <svg class="w-4 h-4 text-gray-500" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
                                 <path fill-rule="evenodd"
                                     d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm11-4a1 1 0 1 0-2 0v4a1 1 0 0 0 .293.707l3 3a1 1 0 0 0 1.414-1.414L13 11.586V8Z"
@@ -160,8 +160,8 @@
                             class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-s-gray-100 rounded-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
                             placeholder="yyyy-mm-dd" name="tgl_kejadian" value="{{ old('tgl_kejadian') }}" required>
                         <span
-                            class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border rounded-s-0 border-s-0 border-gray-300 rounded-e-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
-                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                            class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border rounded-s-0 border-s-0 border-gray-300 rounded-e-md">
+                            <svg class="w-4 h-4 text-gray-500" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
                                 <path fill-rule="evenodd"
                                     d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"
@@ -180,10 +180,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="px-4 py-2 bg-white rounded-b-lg dark:bg-gray-800">
+                    <div class="px-4 py-2 bg-white rounded-b-lg">
                         <label for="tempat_kejadian_perkara" class="sr-only">Publish post</label>
                         <textarea id="tempat_kejadian_perkara" rows="4"
-                            class="block w-full px-0 text-sm text-gray-800 bg-white border-0 dark:bg-gray-800 focus:ring-0"
+                            class="block w-full px-0 text-sm text-gray-800 bg-white border-0 focus:ring-0"
                             name="tempat_kejadian_perkara" placeholder="..." required>{{ old('tempat_kejadian_perkara') }}</textarea>
                     </div>
                 </div>
@@ -195,10 +195,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="px-4 py-2 bg-white rounded-b-lg dark:bg-gray-800">
+                    <div class="px-4 py-2 bg-white rounded-b-lg">
                         <label for="uraian_singkat_perkara" class="sr-only">Publish post</label>
                         <textarea id="uraian_singkat_perkara" rows="4"
-                            class="block w-full px-0 text-sm text-gray-800 bg-white border-0 dark:bg-gray-800 focus:ring-0"
+                            class="block w-full px-0 text-sm text-gray-800 bg-white border-0 focus:ring-0"
                             name="uraian_singkat_perkara" placeholder="..." required>{{ old('uraian_singkat_perkara') }}</textarea>
                     </div>
                 </div>
@@ -211,10 +211,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="px-4 py-2 bg-white rounded-b-lg dark:bg-gray-800">
+                <div class="px-4 py-2 bg-white rounded-b-lg">
                     <label for="undang_undang_dan_pasal" class="sr-only">Publish post</label>
                     <textarea id="undang_undang_dan_pasal" rows="4"
-                        class="block w-full px-0 text-sm text-gray-800 bg-white border-0 dark:bg-gray-800 focus:ring-0"
+                        class="block w-full px-0 text-sm text-gray-800 bg-white border-0 focus:ring-0"
                         name="undang_undang_dan_pasal" placeholder="..." required>{{ old('undang_undang_dan_pasal') }}</textarea>
                 </div>
             </div>
@@ -282,11 +282,11 @@
                         class="flex-shrink-0 z-10 inline-flex items-center px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300 w-60">Unggah
                         SPDP</label>
                     <input
-                        class="block w-full text-sm text-gray-900 border border-gray-300 rounded-e-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                        class="block w-full text-sm text-gray-900 border border-gray-300 rounded-e-lg cursor-pointer bg-gray-50 focus:outline-none"
                         id="berkas_spdp" type="file" name="berkas_spdp" required>
                 </div>
             </div>
-            <div class="flex space-x-1">
+            <div class="flex space-x-1 items-center pb-4 pt-4 mt-4 mb-4 rounded-t border-b border-t sm:mb-5">
                 <button type="submit"
                     class="text-white bg-blue-700 hover:bg-blue-800 font-bold rounded-lg text-sm px-5 py-2.5">
                     Simpan

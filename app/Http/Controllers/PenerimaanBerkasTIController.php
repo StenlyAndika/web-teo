@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ModelJaksa;
 use Illuminate\Http\Request;
 use App\Models\ModelTersangka;
 use App\Models\ModelPenerimaanSPDP;
@@ -15,6 +16,7 @@ class PenerimaanBerkasTIController extends Controller
      */
     public function index()
     {
+        session()->forget('temp_jaksa_data');
         return view('dashboard.penerimaanberkasperkara.index', [
             'title' => 'Penerimaan Berkas Perkara Tahap I'
         ]);
@@ -41,14 +43,67 @@ class PenerimaanBerkasTIController extends Controller
         ]);
     }
 
-    public function temptersangkastore(Request $request) {
+    public function data_jaksa(Request $request)
+    {
+        $search = $request->get('term');
 
-        $tempTersangka = session('temp_tersangka', []);
+        $jaksa = ModelJaksa::where('nama', 'LIKE', '%' . $search . '%')->get();
 
-        $newData = $request->all();
-        $tempTersangka = array_merge($tempTersangka, array_filter($newData));
+        $result = [];
+        foreach ($jaksa as $row) {
+            $result[] = ['value' => $row->nama, 'id' => $row->id_jaksa];
+        }
 
-        session(['temp_tersangka' => $tempTersangka]);
+        return response()->json($result);
+    }
+
+    public function get_temp_jaksa() {
+        $tempJaksa = session('temp_jaksa_data', []);
+
+        $jaksaItems = [];
+        foreach ($tempJaksa as $id => $data) {
+            $jaksa = ModelJaksa::where('id_jaksa', $id)->first();
+
+            if ($jaksa) {
+                $jaksaItems[] = [
+                    'id_jaksa' => $jaksa->id_jaksa,
+                    'nip' => $jaksa->nip,
+                    'nama' => $jaksa->nama,
+                    'pangkat' => $jaksa->pangkat
+                ];
+            }
+        }
+
+        return response()->json(['data' => $jaksaItems]);
+    }
+
+    public function set_temp_jaksa(Request $request) {
+        $id = $request->input('id_jaksa');
+
+        $jaksa = ModelJaksa::where('id_jaksa', $id)->first();
+
+        $tempJaksa = session('temp_jaksa_data', []);
+
+        $tempJaksa[$id] = [
+            'nip' => $jaksa->nip,
+            'nama' => $jaksa->nama,
+            'pangkat' => $jaksa->pangkat
+        ];
+
+        session(['temp_jaksa_data' => $tempJaksa]);
+
+        return response()->json(['success' => true]);
+    }
+
+    public function delete_temp_jaksa($id)
+    {
+        $tempJaksa = session('temp_jaksa_data', []);
+
+        if (isset($tempJaksa[$id])) {
+            unset($tempJaksa[$id]);
+            session(['temp_jaksa_data' => $tempJaksa]);
+        }
+
 
         return response()->json(['success' => true]);
     }

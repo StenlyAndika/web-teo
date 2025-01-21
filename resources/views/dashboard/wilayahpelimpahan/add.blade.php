@@ -30,7 +30,7 @@ class="hidden overflow-y-auto overflow-x-hidden fixed right-0 left-0 z-50 justif
                     <input type="text" class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-e-lg rounded-s-gray-100 rounded-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500" id="nama" name="nama" required/>
                 </div>
             </div>
-            <div class="flex space-x-1">
+            <div class="flex space-x-1 items-center pb-4 pt-4 mt-4 mb-4 rounded-t border-b border-t sm:mb-5">
                 <button type="submit"
                     class="text-white bg-blue-700 hover:bg-blue-800 font-bold rounded-lg text-sm px-5 py-2.5">
                     Simpan

@@ -25,10 +25,27 @@ class="hidden overflow-y-auto overflow-x-hidden fixed right-0 left-0 z-50 justif
         <form method="post" action="{{ route('admin.jaksa.store') }}" autocomplete="off">
             @csrf
             <div class="flex mb-4">
+                <label for="nip" class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300 w-40">Nip</label>
+                <div class="relative w-full">
+                    <input type="text" class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-e-lg rounded-s-gray-100 rounded-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500" id="nip" name="nip" required/>
+                </div>
+            </div>
+            <div class="flex mb-4">
                 <label for="nama" class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300 w-40">Nama Jaksa</label>
                 <div class="relative w-full">
                     <input type="text" class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-e-lg rounded-s-gray-100 rounded-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500" id="nama" name="nama" required/>
                 </div>
+            </div>
+            <div class="flex mb-4">
+                <label for="pangkat"
+                    class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300 w-40">Pangkat</label>
+                <select id="pangkat" name="pangkat"
+                    class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-e-lg rounded-s-gray-100 rounded-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500">
+                    <option selected>-- Pilih --</option>
+                    @foreach ($pangkat as $item)
+                        <option value="{{ $item }}">{{ $item }}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="flex mb-4">
                 <label for="alamat" class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300 w-40">Alamat</label>
@@ -48,7 +65,7 @@ class="hidden overflow-y-auto overflow-x-hidden fixed right-0 left-0 z-50 justif
                     <input type="text" class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-e-lg rounded-s-gray-100 rounded-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500" id="notelp" name="notelp" required/>
                 </div>
             </div>
-            <div class="flex space-x-1">
+            <div class="flex space-x-1 items-center pb-4 pt-4 mt-4 mb-4 rounded-t border-b border-t sm:mb-5">
                 <button type="submit"
                     class="text-white bg-blue-700 hover:bg-blue-800 font-bold rounded-lg text-sm px-5 py-2.5">
                     Simpan

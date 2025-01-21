@@ -12,9 +12,23 @@ class JaksaController extends Controller
      */
     public function index()
     {
+        $pangkat = [
+            'Jaksa Agung',
+            'Jaksa Muda',
+            'Jaksa Penuntut Umum',
+            'Jaksa Penggugat',
+            'Jaksa Penerima Gugatan',
+            'Jaksa Eksekusi', 'Jaksa Pembinaan',
+            'Jaksa Pengawasan', 'Jaksa Perdata',
+            'Jaksa Pidana', 'Jaksa Perdata Pidana',
+            'Jaksa Tindak Pidana Khusus',
+            'Jaksa Tindak Pidana Korupsi'
+        ];
+
         return view('dashboard.jaksa.index', [
             'title' => 'Data Jaksa',
-            'jaksa' => ModelJaksa::all()
+            'jaksa' => ModelJaksa::all(),
+            'pangkat' => $pangkat
         ]);
     }
 
@@ -24,7 +38,9 @@ class JaksaController extends Controller
     public function store(Request $request)
     {
         $rules = [
+            'nip' => 'required',
             'nama' => 'required',
+            'pangkat' => 'required',
             'alamat' => 'required',
             'email' => 'required',
             'notelp' => 'required'
@@ -43,7 +59,9 @@ class JaksaController extends Controller
     public function update(Request $request, string $id)
     {
         $rules = [
+            'nip' => 'required',
             'nama' => 'required',
+            'pangkat' => 'required',
             'alamat' => 'required',
             'email' => 'required',
             'notelp' => 'required'
