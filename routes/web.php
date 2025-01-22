@@ -55,3 +55,5 @@ Route::get('/data-jaksa', [PenerimaanBerkasTIController::class, 'data_jaksa'])->
 Route::get('/get-temp-jaksa', [PenerimaanBerkasTIController::class, 'get_temp_jaksa'])->name('get_temp_jaksa');
 Route::post('/set-temp-jaksa', [PenerimaanBerkasTIController::class, 'set_temp_jaksa'])->name('set_temp_jaksa');
 Route::delete('/delete-temp-jaksa/{id}', [PenerimaanBerkasTIController::class, 'delete_temp_jaksa']);
+Route::post('/admin/prapen/penbt1', [PenerimaanBerkasTIController::class, 'store'])->name('admin.penbt1.store');
+Route::delete('/admin/prapen/penbt1/{id}', [PenerimaanBerkasTIController::class, 'destroy'])->name('admin.penbt1.destroy');

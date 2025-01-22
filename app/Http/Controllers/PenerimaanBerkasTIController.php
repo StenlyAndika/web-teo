@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\ModelJaksa;
+use App\Models\ModelPenBT1;
 use Illuminate\Http\Request;
 use App\Models\ModelTersangka;
+use App\Models\ModelJaksaPenuntut;
 use App\Models\ModelPenerimaanSPDP;
 use App\Models\ModelInstansiPenyidik;
 use App\Models\ModelInstansiPelaksana;
@@ -18,7 +20,8 @@ class PenerimaanBerkasTIController extends Controller
     {
         session()->forget('temp_jaksa_data');
         return view('dashboard.penerimaanberkasperkara.index', [
-            'title' => 'Penerimaan Berkas Perkara Tahap I'
+            'title' => 'Penerimaan Berkas Perkara Tahap I',
+            'penerimaanberkastahap1' => ModelPenBT1::all()
         ]);
     }
 
@@ -85,6 +88,7 @@ class PenerimaanBerkasTIController extends Controller
         $tempJaksa = session('temp_jaksa_data', []);
 
         $tempJaksa[$id] = [
+            'id_jaksa' => $jaksa->id_jaksa,
             'nip' => $jaksa->nip,
             'nama' => $jaksa->nama,
             'pangkat' => $jaksa->pangkat
@@ -114,60 +118,29 @@ class PenerimaanBerkasTIController extends Controller
     public function store(Request $request)
     {
         $rules = [
-            'id_instansi_penyidik' => 'required',
-            'id_instansi_pelaksana' => 'required',
-            'no_sprindik' => 'required',
-            'tgl_sprindik' => 'required',
-            'no_spdp' => 'required',
-            'tgl_spdp' => 'required',
-            'diterima_wilayah_kerja' => 'required',
-            'tgl_diterima' => 'required',
-            'waktu_kejadian' => 'required',
-            'tgl_kejadian' => 'required',
-            'tempat_kejadian_perkara' => 'required',
-            'uraian_singkat_perkara' => 'required',
-            'undang_undang_dan_pasal' => 'required',
-            'jenis_pidana' => 'required',
-            'jenis_perkara' => 'required',
-            'berkas_spdp' => 'file|mimes:pdf'
+            'id_penerimaan_spdp' => 'required',
+            'no_p16' => 'required',
+            'tgl_p16' => 'required'
         ];
-
-        // try {
-        //     $validatedData = $request->validate($rules);
-        // } catch (\Illuminate\Validation\ValidationException $e) {
-        //     \Log::error('Validation failed: ', $e->errors());
-        // }
 
         $validatedData = $request->validate($rules);
 
-        $validatedData['tgl_sprindik'] = date('Y-m-d', strtotime($validatedData['tgl_sprindik']));
-        $validatedData['tgl_spdp'] = date('Y-m-d', strtotime($validatedData['tgl_spdp']));
-        $validatedData['tgl_diterima'] = date('Y-m-d', strtotime($validatedData['tgl_diterima']));
-        $validatedData['tgl_kejadian'] = date('Y-m-d', strtotime($validatedData['tgl_kejadian']));
+        $validatedData['tgl_p16'] = date('Y-m-d', strtotime($validatedData['tgl_p16']));
 
-        // $filePath = $request->file('berkas_spdp')->store('upload/berkas_spdp');
-        // \Log::info('File stored at: ' . $filePath);
+        $newRecord = ModelPenBT1::create($validatedData);
 
-        if ($request->file('berkas_spdp')) {
-            $validatedData['berkas_spdp'] = $request->file('berkas_spdp')->store('upload/berkas_spdp');
+        $tempJaksa = session('temp_jaksa_data');
+
+        foreach ($tempJaksa as $id => $data) {
+            $validatedDataJaksa = [
+                'id_penerimaan_berkas_tahap_i' => $newRecord->id_penerimaan_berkas_tahap_i,
+                'id_jaksa' => $data['id_jaksa']
+            ];
+
+            ModelJaksaPenuntut::create($validatedDataJaksa);
         }
 
-        $newRecord = ModelPenerimaanSPDP::create($validatedData);
-
-        $tempTersangka = session('temp_tersangka');
-        $validatedDataTersangka['id_penerimaan_spdp'] = $newRecord->id_penerimaan_spdp;
-        $validatedDataTersangka['nama'] = $tempTersangka['nama'];
-        $validatedDataTersangka['alamat'] = $tempTersangka['alamat'];
-        $validatedDataTersangka['jekel'] = $tempTersangka['jekel'];
-        $validatedDataTersangka['tempat_lahir'] = $tempTersangka['tempat_lahir'];
-        $validatedDataTersangka['tgl_lahir'] = $tempTersangka['tgl_lahir'];
-        $validatedDataTersangka['agama'] = $tempTersangka['agama'];
-        $validatedDataTersangka['pekerjaan'] = $tempTersangka['pekerjaan'];
-
-
-        ModelTersangka::create($validatedDataTersangka);
-
-        return redirect()->route('admin.penerimaanspdp.index')->with('toast_success', 'Data berhasil ditambah!');
+        return redirect()->route('admin.penbt1.index')->with('toast_success', 'Data berhasil ditambah!');
     }
 
     /**
@@ -175,8 +148,9 @@ class PenerimaanBerkasTIController extends Controller
      */
     public function destroy(string $id)
     {
-        ModelPenerimaanSPDP::where('id_penerimaan_spdp', $id)->delete();
-        ModelTersangka::where('id_penerimaan_spdp', $id)->delete();
-        return redirect()->route('admin.penerimaanspdp.index')->with('toast_success', 'Data berhasil dihapus!');
+        $a = ModelPenBT1::where('id_penerimaan_spdp', $id)->first();
+        ModelJaksaPenuntut::where('id_penerimaan_berkas_tahap_i', $a->id_penerimaan_berkas_tahap_i)->delete();
+        ModelPenBT1::where('id_penerimaan_spdp', $id)->delete();
+        return redirect()->route('admin.penbt1.index')->with('toast_success', 'Data berhasil dihapus!');
     }
 }

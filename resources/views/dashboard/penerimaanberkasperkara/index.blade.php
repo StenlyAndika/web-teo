@@ -32,10 +32,10 @@
                     No
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Asal, No & Tgl Berkas, No & Tgl Penyerahan
+                    Asal, Nomor dan Tanggal Berkas
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Melanggar UU dan Pasal
+                    Melanggar Undang-Undang dan Pasal
                 </th>
                 <th scope="col" class="px-6 py-3">
                     P16 Nomor dan Tanggal, Jaksa Peneliti
@@ -49,37 +49,60 @@
             </tr>
         </thead>
         <tbody>
-            {{-- @foreach ($penerimaanspdp as $item)
+            @foreach ($penerimaanberkastahap1 as $item)
                 <tr class="odd:bg-white even:bg-gray-50 border-b">
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                         {{ $loop->iteration }}
                     </th>
                     <td class="px-6 py-4">
                         @php
-                            $a = App\Models\ModelInstansiPelaksana::where(
+                            $a = App\Models\ModelPenerimaanSPDP::where(
+                                'id_penerimaan_spdp',
+                                $item->id_penerimaan_spdp,
+                            )->first();
+                            $c = App\Models\ModelInstansiPelaksana::where(
                                 'id_instansi_pelaksana',
-                                $item->id_instansi_pelaksana,
+                                $a->id_instansi_pelaksana,
                             )->first();
                         @endphp
-                        {{ $a->nama }}<br>
-                        {{ $item->no_spdp . ' ' . Carbon\Carbon::parse($item->tgl_spdp)->format('d-m-Y') }}<br>
-                        Diterima SPDP : {{ Carbon\Carbon::parse($item->tgl_diterima)->format('d-m-Y') }}
-                    </td>
-                    <td class="px-6 py-4">
-                        {{ $item->tempat_kejadian_perkara }}<br>
-                        {{ '[' . $item->waktu_kejadian . ']' . ' ' . Carbon\Carbon::parse($item->tgl_kejadian)->format('d-m-Y') }}
-                    </td>
-                    <td class="px-6 py-4">
-                        {{ $item->undang_undang_dan_pasal }}
+                        {{ $c->nama }}<br>
+                        {{ $a->no_spdp }} Tgl Berkas : {{ Carbon\Carbon::parse($item->tgl_spdp)->format('d-m-Y') }}<br>
                     </td>
                     <td class="px-6 py-4">
                         @php
-                            $ab = App\Models\ModelTersangka::where(
+                            $b = App\Models\ModelPenerimaanSPDP::where(
                                 'id_penerimaan_spdp',
                                 $item->id_penerimaan_spdp,
                             )->first();
                         @endphp
-                        {{ $ab->nama }}<br>
+                        {{ $b->undang_undang_dan_pasal }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ $item->no_p16 . ' ' . Carbon\Carbon::parse($item->tgl_p16)->format('d-m-Y') }}<br>
+                        @php
+                            $jp = App\Models\ModelJaksaPenuntut::where(
+                                'id_penerimaan_berkas_tahap_i',
+                                $item->id_penerimaan_berkas_tahap_i,
+                            )->get();
+                        @endphp
+                        @foreach ($jp as $itemjp)
+                            @php
+                                $jaksa = App\Models\ModelJaksa::where(
+                                    'id_jaksa',
+                                    $itemjp->id_jaksa,
+                                )->first();
+                            @endphp
+                            {{ $loop->iteration . '.' . $jaksa->nama }}<br>
+                        @endforeach
+                    </td>
+                    <td class="px-6 py-4">
+                        @php
+                            $d = App\Models\ModelTersangka::where(
+                                'id_penerimaan_spdp',
+                                $item->id_penerimaan_spdp,
+                            )->first();
+                        @endphp
+                        {{ $d->nama }}
                     </td>
                     <td class="flex justify-start space-x-2">
                         <button data-modal-target="popup-delete-{{ $item->id_penerimaan_spdp }}"
@@ -88,10 +111,10 @@
                             type="button">
                             Hapus
                         </button>
-                        @include('dashboard.penerimaanspdp.delete')
+                        @include('dashboard.penerimaanberkasperkara.delete')
                     </td>
                 </tr>
-            @endforeach --}}
+            @endforeach
         </tbody>
     </table>
 @endsection

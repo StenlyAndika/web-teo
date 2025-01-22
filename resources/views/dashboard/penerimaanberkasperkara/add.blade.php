@@ -59,7 +59,7 @@
                 </div>
             </div>
         </div>
-        <form method="post" action="" enctype="multipart/form-data" autocomplete="off">
+        <form method="post" action="{{ route('admin.penbt1.store') }}" autocomplete="off">
             @csrf
             <input type="hidden" id="id_penerimaan_spdp" name="id_penerimaan_spdp" value="">
             <div class="grid gap-6 mb-4 md:grid-cols-2">
@@ -70,7 +70,7 @@
                     <div class="relative w-full">
                         <input type="text" id="no_p16" name="no_p16"
                             class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-e-lg rounded-s-gray-100 rounded-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
-                            value="{{ old('no') }}" />
+                            value="{{ old('no_p16') }}" />
                     </div>
                 </div>
                 <div class="flex">

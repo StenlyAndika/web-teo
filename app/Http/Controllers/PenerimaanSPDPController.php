@@ -140,7 +140,7 @@ class PenerimaanSPDPController extends Controller
 
         ModelTersangka::create($validatedDataTersangka);
 
-        return redirect()->route('admin.penerimaanspdp.index')->with('toast_success', 'Data berhasil ditambah!');
+        return redirect()->route('admin.penspdp.index')->with('toast_success', 'Data berhasil ditambah!');
     }
 
     /**
@@ -150,6 +150,6 @@ class PenerimaanSPDPController extends Controller
     {
         ModelPenerimaanSPDP::where('id_penerimaan_spdp', $id)->delete();
         ModelTersangka::where('id_penerimaan_spdp', $id)->delete();
-        return redirect()->route('admin.penerimaanspdp.index')->with('toast_success', 'Data berhasil dihapus!');
+        return redirect()->route('admin.penspdp.index')->with('toast_success', 'Data berhasil dihapus!');
     }
 }
