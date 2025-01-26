@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JaksaController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PelimpahanController;
 use App\Http\Controllers\PenerimaanSPDPController;
 use App\Http\Controllers\InstansiPenyidikController;
 use App\Http\Controllers\InstansiPelaksanaController;
@@ -57,3 +58,7 @@ Route::post('/set-temp-jaksa', [PenerimaanBerkasTIController::class, 'set_temp_j
 Route::delete('/delete-temp-jaksa/{id}', [PenerimaanBerkasTIController::class, 'delete_temp_jaksa']);
 Route::post('/admin/prapen/penbt1', [PenerimaanBerkasTIController::class, 'store'])->name('admin.penbt1.store');
 Route::delete('/admin/prapen/penbt1/{id}', [PenerimaanBerkasTIController::class, 'destroy'])->name('admin.penbt1.destroy');
+
+Route::get('/admin/prapen/pelimpahan', [PelimpahanController::class, 'index'])->name('admin.pelimpahan.index');
+Route::post('/admin/prapen/pelimpahan', [PelimpahanController::class, 'store'])->name('admin.pelimpahan.store');
+Route::delete('/admin/prapen/pelimpahan/{id}', [PelimpahanController::class, 'destroy'])->name('admin.pelimpahan.destroy');

@@ -150,34 +150,8 @@
                 </ul>
             </li>
             <li class="border-b border-gray-200">
-                <button type="button"
-                    class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-blue-100 hover:font-semibold
-                    {{-- {{ Request::is('admin/master/*') ? 'border-b border-gray-20' : '' }} --}}
-                     "
-                    aria-controls="dropdown-example3" data-collapse-toggle="dropdown-example3" {{-- aria-expanded="{{ Request::is('admin/master/*') ? 'true' : 'false' }}" --}}>
-                    <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Berkas Lengkap</span>
-                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                        fill="none"viewBox="0 0 10 6">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="m1 1 4 4 4-4" />
-                    </svg>
-                </button>
-                <ul id="dropdown-example3" class="py-1 space-y-1 hidden">
-                    <li>
-                        <a href=""
-                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-blue-100 hover:font-semibold">Surat
-                            Perintah Penyerahan Tsk & Bb</a>
-                    </li>
-                    <li>
-                        <a href=""
-                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-blue-100 hover:font-semibold">Surat
-                            Pengantar Penyerahan Tsk & Bb</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="border-b border-gray-200">
-                <a href=""
-                    class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-blue-100 hover:font-semibold">
+                <a href="{{ route('admin.pelimpahan.index') }}"
+                    class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-blue-100 hover:font-semibold {{ Request::is('admin/prapen/pelimpahan*') ? 'text-green-800 border border-green-300 rounded-lg bg-green-100' : '' }}">
                     <span class="ms-3">Penyelesaian Tahap Pra Penuntutan</span>
                 </a>
             </li>
@@ -187,30 +161,14 @@
                         <path
                             d="M19.5 21a3 3 0 0 0 3-3v-4.5a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3V18a3 3 0 0 0 3 3h15ZM1.5 10.146V6a3 3 0 0 1 3-3h5.379a2.25 2.25 0 0 1 1.59.659l2.122 2.121c.14.141.331.22.53.22H19.5a3 3 0 0 1 3 3v1.146A4.483 4.483 0 0 0 19.5 9h-15a4.483 4.483 0 0 0-3 1.146Z" />
                     </svg>
-                    <span class="ms-3">PENUNTUTAN</span>
+                    <span class="ms-3">LAPORAN</span>
                 </p>
             </li>
             <li class="border-b border-gray-200">
-                <button type="button"
-                    class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-blue-100 hover:font-semibold
-                    {{-- {{ Request::is('admin/master/*') ? 'border-b border-gray-20' : '' }} --}}
-                     "
-                    aria-controls="dropdown-example4" data-collapse-toggle="dropdown-example4" {{-- aria-expanded="{{ Request::is('admin/master/*') ? 'true' : 'false' }}" --}}>
-                    <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Penerimaan Berkas Tahap
-                        II</span>
-                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                        fill="none"viewBox="0 0 10 6">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="m1 1 4 4 4-4" />
-                    </svg>
-                </button>
-                <ul id="dropdown-example4" class="py-1 space-y-1 hidden">
-                    <li>
-                        <a href=""
-                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-blue-100 hover:font-semibold">Perkara
-                            Tahap Penuntutan</a>
-                    </li>
-                </ul>
+                <a href=""
+                    class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-blue-100 hover:font-semibold">
+                    <span class="ms-3">Laporan Pelimpahan</span>
+                </a>
             </li>
         </ul>
     </div>
