@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JaksaController;
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PelimpahanController;
 use App\Http\Controllers\PenerimaanSPDPController;
@@ -62,3 +63,7 @@ Route::delete('/admin/prapen/penbt1/{id}', [PenerimaanBerkasTIController::class,
 Route::get('/admin/prapen/pelimpahan', [PelimpahanController::class, 'index'])->name('admin.pelimpahan.index');
 Route::post('/admin/prapen/pelimpahan', [PelimpahanController::class, 'store'])->name('admin.pelimpahan.store');
 Route::delete('/admin/prapen/pelimpahan/{id}', [PelimpahanController::class, 'destroy'])->name('admin.pelimpahan.destroy');
+
+Route::get('/admin/laporan/p16', [LaporanController::class, 'laporan_p16'])->name('admin.laporan.p16');
+Route::get('/admin/laporan/pelimpahan', [LaporanController::class, 'laporan_pelimpahan'])->name('admin.laporan.pelimpahan');
+Route::get('/admin/laporan/pelimpahan/print/{bln}', [LaporanController::class, 'laporan_pelimpahan_print'])->name('admin.pelimpahan.print');

@@ -47,7 +47,8 @@
             @foreach ($penerimaanberkastahap1 as $item)
                 <tr class="odd:bg-white even:bg-gray-50 border-b">
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                        {{ $loop->iteration }}
+                        {{ $loop->iteration }}-
+                        {{ $item->id_penerimaan_spdp }}
                     </th>
                     <td class="px-6 py-4">
                         @php
@@ -88,6 +89,7 @@
                                 type="button">
                                 Pelimpahan
                             </button>
+                            @include('dashboard.pelimpahan.show')
                         @else
                             <button data-modal-target="popup-delete-{{ $item->id_penerimaan_spdp }}"
                                 data-modal-toggle="popup-delete-{{ $item->id_penerimaan_spdp }}"
@@ -95,7 +97,7 @@
                                 type="button">
                                 Hapus
                             </button>
-                            @include('dashboard.penerimaanspdp.delete')
+                            @include('dashboard.pelimpahan.delete')
                         @endif
                     </td>
                 </tr>

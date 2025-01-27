@@ -105,6 +105,10 @@
                         {{ $d->nama }}
                     </td>
                     <td class="flex justify-start space-x-2">
+                        <a href="{{ route('admin.laporan.p16', ['id' => $item->id_penerimaan_berkas_tahap_i]) }}"
+                            class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold rounded-lg text-sm px-5 py-2.5 text-center mt-2 mb-4">
+                            Cetak P16
+                        </a>
                         <button data-modal-target="popup-delete-{{ $item->id_penerimaan_spdp }}"
                             data-modal-toggle="popup-delete-{{ $item->id_penerimaan_spdp }}"
                             class="block text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold rounded-lg text-sm px-5 py-2.5 text-center"

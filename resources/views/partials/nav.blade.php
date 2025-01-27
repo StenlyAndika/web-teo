@@ -14,7 +14,7 @@
                     </svg>
                 </button>
                 <a href="{{ route('admin.dashboard') }}" class="flex ms-2 md:me-24">
-                    <img src="/img/tablogo.webp" class="h-8 me-3" alt="FlowBite Logo" />
+                    <img src="/img/tablogo.png" class="h-8 me-3" alt="FlowBite Logo" />
                     <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap">Kejari Sungai
                         Penuh</span>
                 </a>
@@ -165,8 +165,8 @@
                 </p>
             </li>
             <li class="border-b border-gray-200">
-                <a href=""
-                    class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-blue-100 hover:font-semibold">
+                <a href="{{ route('admin.laporan.pelimpahan') }}"
+                    class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-blue-100 hover:font-semibold {{ Request::is('admin/laporan/pelimpahan*') ? 'text-green-800 border border-green-300 rounded-lg bg-green-100' : '' }}">
                     <span class="ms-3">Laporan Pelimpahan</span>
                 </a>
             </li>
