@@ -13,12 +13,21 @@
 </head>
 
 <body>
-    @include('partials.nav')
-    <div class="p-4 sm:ml-64 mt-16">
-        <div class="w-full p-4 text-center bg-white border border-gray-200 rounded-lg shadow">
-            @yield('container')
+    {{-- @dd(auth()->user()); --}}
+    {{-- @can('admin') --}}
+    @if (auth()->user())
+        @include('partials.nav')
+        <div class="p-4 sm:ml-64 mt-16">
+            <div class="w-full p-4 text-center bg-white border border-gray-200 rounded-lg shadow">
+                @yield('container')
+            </div>
         </div>
-    </div>
+    @else
+        @yield('containerlogin')
+    @endif
+    {{-- @endcan --}}
+    {{-- @cannot('admin')
+    @endcannot --}}
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@9.0.3"></script>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
