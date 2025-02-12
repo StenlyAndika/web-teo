@@ -27,7 +27,7 @@
                 <input type="hidden" name="id_penerimaan_spdp" value="{{ $item->id_penerimaan_spdp }}">
                 <div class="flex">
                     <label for="tgl_pelimpahan"
-                        class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300 w-60">Tanggal
+                        class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-gray-900 bg-gray-100 border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300 w-80">Tanggal
                         Pelimpahan</label>
                     <div class="flex w-full">
                         <input type="text" datepicker datepicker-autohide datepicker-format="yyyy-mm-dd"
@@ -46,7 +46,7 @@
                 </div>
                 <div class="flex mt-4">
                     <label for="id_wilayah_pelimpahan"
-                        class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300 w-60">Wilayah Pelimpahan</label>
+                        class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-gray-900 bg-gray-100 border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300 w-80">Wilayah Pelimpahan</label>
                     <select id="id_wilayah_pelimpahan" name="id_wilayah_pelimpahan"
                         class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-e-lg rounded-s-gray-100 rounded-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500">
                         <option selected>-- Pilih --</option>
@@ -57,7 +57,7 @@
                 </div>
                 <div class="flex mt-4">
                     <label for="berkas_p16"
-                        class="flex-shrink-0 z-10 inline-flex items-center px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300 w-60">Unggah
+                        class="flex-shrink-0 z-10 inline-flex items-center px-4 text-sm font-medium text-gray-900 bg-gray-100 border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300 w-80">Unggah
                         Surat P16</label>
                     <input
                         class="block w-full text-sm text-gray-900 border border-gray-300 rounded-e-lg cursor-pointer bg-gray-50 focus:outline-none"
@@ -65,16 +65,15 @@
                 </div>
                 <div class="flex mt-4">
                     <label for="berkas_sprint"
-                        class="flex-shrink-0 z-10 inline-flex items-center px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300 w-60">Unggah
-                        Sprint PT & BB</label>
+                        class="flex-shrink-0 z-10 inline-flex items-center px-4 text-sm font-medium text-gray-900 bg-gray-100 border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300 w-80">Unggah P-31 (Berita Acara Pelimpahan)</label>
                     <input
                         class="block w-full text-sm text-gray-900 border border-gray-300 rounded-e-lg cursor-pointer bg-gray-50 focus:outline-none"
                         id="berkas_sprint" type="file" name="berkas_sprint" required>
                 </div>
                 <div class="flex mt-4">
                     <label for="berkas_spptbb"
-                        class="flex-shrink-0 z-10 inline-flex items-center px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300 w-60">Unggah
-                        SPPT & BB</label>
+                        class="flex-shrink-0 z-10 inline-flex items-center px-4 text-sm font-medium text-gray-900 bg-gray-100 border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300 w-80">Unggah
+                        P-29 (Surat Dakwaan)</label>
                     <input
                         class="block w-full text-sm text-gray-900 border border-gray-300 rounded-e-lg cursor-pointer bg-gray-50 focus:outline-none"
                         id="berkas_spptbb" type="file" name="berkas_spptbb" required>
