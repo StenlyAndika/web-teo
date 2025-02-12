@@ -63,8 +63,12 @@
                                 'id_penerimaan_spdp',
                                 $item->id_penerimaan_spdp,
                             )->first();
+                            $c = App\Models\ModelInstansiPelaksana::where(
+                                'id_instansi_pelaksana',
+                                $a->id_instansi_pelaksana,
+                            )->first();
                         @endphp
-                        {{ $a->nama }}<br>
+                        {{ $c->nama }}<br>
                         {{ $a->no_spdp . ' ' . Carbon\Carbon::parse($a->tgl_spdp)->format('d-m-Y') }}<br>
                         Diterima SPDP : {{ Carbon\Carbon::parse($a->tgl_diterima)->format('d-m-Y') }}
                     </td>

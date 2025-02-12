@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('pelimpahan', function (Blueprint $table) {
             $table->integer('id_pelimpahan')->autoIncrement();
             $table->integer('id_penerimaan_spdp');
+            $table->date('tgl_pelimpahan');
             $table->integer('id_wilayah_pelimpahan');
             $table->text('berkas_p16');
             $table->text('berkas_sprint');
