@@ -28,7 +28,7 @@ Route::post('/login', [AuthController::class, 'authenticate'])->name('auth')->mi
 Route::post('/generate', [AuthController::class, 'generate'])->name('generateadmin')->middleware(['guest', 'checkadmin']);
 
 Route::middleware(['admin'])->group(function () {
-    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 
     Route::get('/admin/master/jaksa', [JaksaController::class, 'index'])->name('admin.jaksa.index');
