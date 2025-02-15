@@ -70,6 +70,7 @@
                 </a>
             </li>
             <li class="border-b border-gray-200">
+                @cannot('root')
                 <button type="button"
                     class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-blue-100 hover:font-semibold
                     {{ Request::is('admin/master/*') ? 'border-b border-gray-20' : '' }}"
@@ -157,6 +158,7 @@
                     <span class="ms-3">Penyelesaian Tahap Pra Penuntutan</span>
                 </a>
             </li>
+            @endcan
             <li>
                 <p class="flex items-center p-2 text-gray-900 border border-blue-300 rounded-lg font-semibold">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">

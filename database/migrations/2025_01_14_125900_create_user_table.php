@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text('nama');
             $table->text('password');
             $table->integer('is_admin');
+            $table->integer('is_root');
         });
     }
 

@@ -23,8 +23,17 @@ class AuthController extends Controller
         $validated['password'] = bcrypt('admin');
         $validated['nama'] = 'Admin';
         $validated['is_admin'] = '1';
+        $validated['is_root'] = '0';
 
         User::create($validated);
+
+        $validated2['username'] = 'root';
+        $validated2['password'] = bcrypt('root');
+        $validated2['nama'] = 'Super Admin';
+        $validated2['is_admin'] = '0';
+        $validated2['is_root'] = '1';
+
+        User::create($validated2);
 
         return redirect()->route('welcome')->with('toast_success', 'Admin berhasil ditambah!');
     }

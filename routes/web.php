@@ -72,6 +72,8 @@ Route::middleware(['admin'])->group(function () {
     Route::delete('/admin/prapen/pelimpahan/{id}', [PelimpahanController::class, 'destroy'])->name('admin.pelimpahan.destroy');
 
     Route::get('/admin/laporan/p16', [LaporanController::class, 'laporan_p16'])->name('admin.laporan.p16');
-    Route::get('/admin/laporan/pelimpahan', [LaporanController::class, 'laporan_pelimpahan'])->name('admin.laporan.pelimpahan');
-    Route::get('/admin/laporan/pelimpahan/print/{bln}', [LaporanController::class, 'laporan_pelimpahan_print'])->name('admin.pelimpahan.print');
+    // Route::middleware(['root'])->group(function () {
+        Route::get('/admin/laporan/pelimpahan', [LaporanController::class, 'laporan_pelimpahan'])->name('admin.laporan.pelimpahan');
+        Route::get('/admin/laporan/pelimpahan/print/{bln}', [LaporanController::class, 'laporan_pelimpahan_print'])->name('admin.pelimpahan.print');
+    // });
 });
