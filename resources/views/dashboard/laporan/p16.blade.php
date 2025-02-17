@@ -184,7 +184,7 @@
         }
 
         .right-align td:first-child {
-            width: 55%;
+            width: 65%;
         }
 
         .right-align td:last-child {
@@ -197,18 +197,28 @@
         <tr>
             <td>&nbsp;</td>
             <td>Dikeluarkan di</td>
-            <td> : </td>
-            <td>Sungai Penuh</td>
+            <td colspan="2"> : Sungai Penuh</td>
         </tr>
         <tr>
             <td>&nbsp;</td>
             <td>Pada tanggal</td>
-            <td> : </td>
-            <td>{{ Carbon\Carbon::now()->format('d-m-Y') }}</td>
+            <td colspan="2"> : {{ Carbon\Carbon::now()->format('d-m-Y') }}</td>
         </tr>
         <tr>
             <td>&nbsp;</td>
-            <th>Kasi Pidana Umum</th>
+            <th colspan="3" style="text-align: left">Kepala Seksi Tindak Pidana Umum</th>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td colspan="3" style="text-align: left">Wahyu Nugraha Efendi, SH., MH</td>
         </tr>
     </table>
 </body>
