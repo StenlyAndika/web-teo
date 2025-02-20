@@ -5,7 +5,7 @@
         <h1 class="text-2xl font-semibold text-gray-900">{{ $title }}</h1>
     </div>
 
-    <a href="{{ route('admin.penbt1.create') }}"
+    <a href="{{ route('admin.beritaacara.create') }}"
         class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold rounded-lg text-sm px-5 py-2.5 text-center mt-2 mb-4 w-40">Tambah</a>
 
     @if (session('toast_success'))
@@ -32,16 +32,16 @@
                     No
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Asal, Nomor dan Tanggal Berkas
+                    No P31
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Melanggar Undang-Undang dan Pasal
+                    Jenis Tahanan
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    P16 Nomor dan Tanggal, Jaksa Peneliti
+                    Tanggal Penahanan
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Nama Tersangka
+                    Tempat Penahanan
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Opsi
@@ -49,65 +49,28 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($penerimaanberkastahap1 as $item)
+            @foreach ($beritaacara as $item)
                 <tr class="odd:bg-white even:bg-gray-50 border-b">
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                         {{ $loop->iteration }}
                     </th>
                     <td class="px-6 py-4">
-                        @php
-                            $a = App\Models\ModelPenerimaanSPDP::where(
-                                'id_penerimaan_spdp',
-                                $item->id_penerimaan_spdp,
-                            )->first();
-                            $c = App\Models\ModelInstansiPelaksana::where(
-                                'id_instansi_pelaksana',
-                                $a->id_instansi_pelaksana,
-                            )->first();
-                        @endphp
-                        {{ $c->nama }}<br>
-                        {{ $a->no_spdp }} Tgl Berkas : {{ Carbon\Carbon::parse($item->tgl_spdp)->format('d-m-Y') }}<br>
+                        {{ $item->no_p31 }}
                     </td>
                     <td class="px-6 py-4">
-                        @php
-                            $b = App\Models\ModelPenerimaanSPDP::where(
-                                'id_penerimaan_spdp',
-                                $item->id_penerimaan_spdp,
-                            )->first();
-                        @endphp
-                        {{ $b->undang_undang_dan_pasal }}
+                        {{ $item->jenis_tahanan }}
                     </td>
                     <td class="px-6 py-4">
-                        {{ $item->no_p16 . ' ' . Carbon\Carbon::parse($item->tgl_p16)->format('d-m-Y') }}<br>
-                        @php
-                            $jp = App\Models\ModelJaksaPenuntut::where(
-                                'id_penerimaan_berkas_tahap_i',
-                                $item->id_penerimaan_berkas_tahap_i,
-                            )->get();
-                        @endphp
-                        @foreach ($jp as $itemjp)
-                            @php
-                                $jaksa = App\Models\ModelJaksa::where(
-                                    'id_jaksa',
-                                    $itemjp->id_jaksa,
-                                )->first();
-                            @endphp
-                            {{ $loop->iteration . '.' . $jaksa->nama }}<br>
-                        @endforeach
+                        {{ Carbon\Carbon::parse($item->tgl_penahanan_dari)->format('d-m-Y') }} s/d
+                        {{ Carbon\Carbon::parse($item->tgl_penahanan_hingga)->format('d-m-Y') }}
                     </td>
                     <td class="px-6 py-4">
-                        @php
-                            $d = App\Models\ModelTersangka::where(
-                                'id_penerimaan_spdp',
-                                $item->id_penerimaan_spdp,
-                            )->first();
-                        @endphp
-                        {{ $d->nama }}
+                        {{ $item->lokasi_penahanan }}
                     </td>
                     <td class="flex justify-start space-x-2">
-                        <a href="{{ route('admin.laporan.p16', ['id' => $item->id_penerimaan_berkas_tahap_i]) }}"
+                        <a href="{{ route('admin.laporan.p31', ['id' => $item->id_berita_acara_pelimpahan]) }}"
                             class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold rounded-lg text-sm px-5 py-2.5 text-center mt-2 mb-4">
-                            Cetak P-16
+                            Cetak P-31
                         </a>
                         <button data-modal-target="popup-delete-{{ $item->id_penerimaan_spdp }}"
                             data-modal-toggle="popup-delete-{{ $item->id_penerimaan_spdp }}"
@@ -115,7 +78,7 @@
                             type="button">
                             Hapus
                         </button>
-                        @include('dashboard.penerimaanberkasperkara.delete')
+                        @include('dashboard.beritaacara.delete')
                     </td>
                 </tr>
             @endforeach

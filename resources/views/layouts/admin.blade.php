@@ -13,8 +13,6 @@
 </head>
 
 <body>
-    {{-- @dd(auth()->user()); --}}
-    {{-- @can('admin') --}}
     @if (auth()->user())
         @include('partials.nav')
         <div class="p-4 sm:ml-64 mt-16">
@@ -25,9 +23,6 @@
     @else
         @yield('containerlogin')
     @endif
-    {{-- @endcan --}}
-    {{-- @cannot('admin')
-    @endcannot --}}
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@9.0.3"></script>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
@@ -175,7 +170,48 @@
         </script>
     @endif
 
-    @if (request()->segment(3) == 'penbt1' && request()->segment(4) == 'create')
+    @if (request()->segment(4) == 'pbp' && request()->segment(5) == 'create')
+        <script>
+            $(document).ready(function() {
+                let id = $('#no_spdp_cari').val();
+
+                if (id != "-- Pilih --") {
+                    let containerSPDP = $('.spdp-container');
+                    containerSPDP.html("");
+
+                    $.ajax({
+                        url: "{{ url('data-spdp') }}/" + id,
+                        type: "GET",
+                        success: function(response) {
+                            containerSPDP.append(response);
+                            $('#id_penerimaan_spdp').val(id);
+                        },
+                        error: function(jqXHR, textStatus, errorThrown) {}
+                    });
+                }
+
+                $('#no_spdp_cari').on('change', function() {
+
+                    let id = $(this).val();
+
+                    let containerSPDP = $('.spdp-container');
+                    containerSPDP.html("");
+
+                    $.ajax({
+                        url: "{{ url('data-spdp') }}/" + id,
+                        type: "GET",
+                        success: function(response) {
+                            containerSPDP.append(response);
+                            $('#id_penerimaan_spdp').val(id);
+                        },
+                        error: function(jqXHR, textStatus, errorThrown) {}
+                    });
+                });
+            });
+        </script>
+    @endif
+
+    @if (request()->segment(4) == 'beritaacara' && request()->segment(5) == 'create')
         <script>
             $(document).ready(function() {
                 let id = $('#no_spdp_cari').val();

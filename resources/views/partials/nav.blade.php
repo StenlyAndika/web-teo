@@ -135,8 +135,7 @@
                     class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-blue-100 hover:font-semibold
                     {{ Request::is('admin/prapen/penbt1*') ? 'border-b border-gray-20' : '' }}"
                     aria-controls="dropdown-example2" data-collapse-toggle="dropdown-example2" aria-expanded="{{ Request::is('admin/prapen/penbt1*') ? 'true' : 'false' }}">
-                    <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Penerimaan Berkas Tahap
-                        I</span>
+                    <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Penerimaan Berkas</span>
                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                         fill="none"viewBox="0 0 10 6">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -145,8 +144,12 @@
                 </button>
                 <ul id="dropdown-example2" class="py-1 space-y-1 {{ Request::is('admin/prapen/penbt1*') ? '' : 'hidden' }}">
                     <li>
+                        <a href="{{ route('admin.beritaacara.index') }}"
+                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-blue-100 hover:font-semibold {{ Request::is('admin/prapen/penbt1/beritaacara*') ? 'text-green-800 border border-green-300 rounded-lg bg-green-100' : '' }}">Berkas Berita Acara Pelimpahan</a>
+                    </li>
+                    <li>
                         <a href="{{ route('admin.penbt1.index') }}"
-                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-blue-100 hover:font-semibold {{ Request::is('admin/prapen/penbt1*') ? 'text-green-800 border border-green-300 rounded-lg bg-green-100' : '' }}">Penerimaan
+                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-blue-100 hover:font-semibold {{ Request::is('admin/prapen/penbt1/pbp*') ? 'text-green-800 border border-green-300 rounded-lg bg-green-100' : '' }}">Penerimaan
                             Berkas Perkara</a>
                     </li>
                 </ul>

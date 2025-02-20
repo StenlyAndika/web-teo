@@ -14,33 +14,99 @@
 
         .tb2 {
             text-align: center !important;
+            padding: 0%;
+            margin: 0%;
+        }
+
+        body {
+            font-size: 12px !important;
+        }
+
+        .table-body {
+            width: 100%;
+            border-collapse: collapse;
+            /* Ensures that borders are not doubled */
+        }
+
+        .table-body th,
+        .table-body td {
+            border: 1px solid black;
+        }
+
+        .table-body th,
+        .table-body td {
+            padding: 8px;
+            text-align: left;
+        }
+
+        .kopsurat {
+            width: 100%;
+            align-content: left;
+        }
+
+        .kop {
+            border-bottom : 5px solid #000;
+            padding: 2px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .tengah {
+            text-align : center;
+            line-height: 5px;
         }
     </style>
 </head>
 <body>
+    <div class="kopsurat">
+        <table class="kop">
+            <tr>
+                <td><img src="img/tablogo.png" width="100px"></td>
+                <td class="tengah">
+                    <h2>KEJAKSAAN REPUBLIK INDONESIA</h2>
+                    <h2>KEJAKSAAN TINGGI JAMBI</h2>
+                    <h1>KEJAKSAAN NEGERI SUNGAI PENUH</h1>
+                    <p>Jl. Depati Parbo, Pondok Tinggi Kota Sungai Penuh 37111</p>
+                    <p>Telp. (0748) 21328 fax. (0748) 22272 www.kejari-sungaipenuh.go.id</p>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <table width="100%">
+        <tr>
+            <td style="width: 32%"><strong>"Demi Keadilan dan Kebenaran Berdasarkan Ketuhanan Yang Maha Esa"</strong></td>
+            <td style="text-align: right"><strong>P-31</strong></td>
+        </tr>
+    </table>
     <table width="100%" class="tb2">
         <tr>
             <td>
-                <h4>SURAT PERINTAH PENUNJUKAN JAKSA PENUNTUT UMUM</h4>
-                <h4>UNTUK MENGIKUTI PERKEMBANGAN PENYIDIKAN</h4>
-                <h4>PERKARA TINDAK PIDANA</h4>
-                <h4>Nomor: {{ $p16->no_p16 }}</h4>
+                <h4>SURAT PELIMPAHAN PERKARA</h4>
+                <h4>ACARA PEMERIKSAAN BIASA</h4>
+                <h4>NOMOR: {{ $p31->no_p31 }}</h4>
+                <h4>KEPALA KEJAKSAAN NEGERI SUNGAI PENUH</h4>
         </tr>
     </table>
     <table>
         <tr style="vertical-align: top;">
-            <th style="text-align: left;">Dasar</th>
-            <td>1.</td>
-            <td colspan="3">Undang-Undang Republik Indonesia Nomor 8 Tahun 1981 tentang Kitab Undang-Undang Hukum Acara
-                Pidana (KUHP) Pasal 8 (3) a, Pasal 14a, b, Pasal 14 huruf a, b, l, Pasal 109, Pasal 110 dan Pasal 138, 20
-                Ayat (2), Pasal 21, 23, 25.</td>
+            <th style="text-align: left;">Menimbang&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+            <td>a.</td>
+            <td colspan="3">Bahwa Penuntut Umum berpendapat, dari hasil penyidikan dapat dilakukan penuntutan dengan dakwaan telah melakukan tindak pidana sebagaimana diuraikan dan diancam dengan pidana dalam <strong><i>Kesatu Primair</i></strong> Pasal 263 Ayat (2) KUHPidana, <strong><i>Subsidair</i></strong> Pasal 263 Ayat (2) KUHPidana Jo Pasal 55 Ayat (1) KUHPidana, <strong><i>Kedua Primair</i></strong> Pasal 263 Ayat (1) KUHPidana, <strong><i>Subsidair</i></strong> Pasal 263 Ayat (1) KUHPidana Jo Pasal 55 Ayat (1) KUHPidana.</td>
         </tr>
         <tr style="vertical-align: top;">
             <th></th>
-            <td>2.</td>
-            <td colspan="3">Undang-Undang Republik Indonesia No. 16 Tahun 2004 tentang Kejaksaan Republik Indonesia.</td>
+            <td>b.</td>
+            <td colspan="3">Bahwa pemeriksaan selanjutnya adalah masuk wewenang PENGADILAN NEGERI SUNGAI PENUH.</td>
         </tr>
         <tr style="vertical-align: top;">
+            <th style="text-align: left;">Membaca</th>
+            <td></td>
+            @php
+                $d = App\Models\ModelPenerimaanSPDP::where('id_penerimaan_spdp', $p31->id_penerimaan_spdp)->first();
+            @endphp
+            <td colspan="3">Berkas Perkara Reg. Nomor {{ $d->no_spdp }} yang dibuat oleh Penyidik atas sumpah jabatan dalam perkara Terdakwa.</td>
+        </tr>
+        {{-- <tr style="vertical-align: top;">
             <th></th>
             <td>3.</td>
             <td colspan="3">Surat Pemberitahuan Dimulainya Penyidikan terhadap tersangka.</td>
@@ -160,7 +226,7 @@
         <tr>
             <th></th>
             <td colspan="4">4. Agar dilaksanakan dengan penuh rasa tanggung jawab</td>
-        </tr>
+        </tr> --}}
     </table>
 
     <style>

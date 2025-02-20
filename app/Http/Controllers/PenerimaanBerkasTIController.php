@@ -20,7 +20,7 @@ class PenerimaanBerkasTIController extends Controller
     {
         session()->forget('temp_jaksa_data');
         return view('dashboard.penerimaanberkasperkara.index', [
-            'title' => 'Penerimaan Berkas Perkara Tahap I',
+            'title' => 'Penerimaan Berkas Perkara',
             'penerimaanberkastahap1' => ModelPenBT1::all()
         ]);
     }
@@ -31,7 +31,7 @@ class PenerimaanBerkasTIController extends Controller
     public function create()
     {
         return view('dashboard.penerimaanberkasperkara.add', [
-            'title' => 'Penerimaan Berkas Perkara Tahap I',
+            'title' => 'Penerimaan Berkas Perkara',
             'penerimaanspdp' => ModelPenerimaanSPDP::all()
         ]);
     }
