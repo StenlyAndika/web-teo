@@ -15,19 +15,64 @@
         .tb2 {
             text-align: center !important;
         }
+
+        .tb3{
+            border-collapse: collapse !important;
+        }
+
+        body {
+            font-size: 14px !important;
+        }
+
+        .kopsurat {
+            width: 100%;
+            align-content: left;
+        }
+
+        .kop {
+            border-bottom : 5px solid #000;
+            padding: 2px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .tengah {
+            text-align : center;
+            line-height: 5px;
+        }
     </style>
 </head>
 <body>
+    <div class="kopsurat">
+        <table class="kop">
+            <tr>
+                <td><img src="img/tablogo.png" width="100px"></td>
+                <td class="tengah">
+                    <h2>KEJAKSAAN REPUBLIK INDONESIA</h2>
+                    <h2>KEJAKSAAN TINGGI JAMBI</h2>
+                    <h1>KEJAKSAAN NEGERI SUNGAI PENUH</h1>
+                    <p>Jl. Depati Parbo, Pondok Tinggi Kota Sungai Penuh 37111</p>
+                    <p>Telp. (0748) 21328 fax. (0748) 22272 www.kejari-sungaipenuh.go.id</p>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <table width="100%">
+        <tr>
+            <td style="width: 32%"><strong>"Demi Keadilan dan Kebenaran Berdasarkan Ketuhanan Yang Maha Esa"</strong></td>
+            <td style="text-align: right"><strong>P-16</strong></td>
+        </tr>
+    </table>
     <table width="100%" class="tb2">
         <tr>
             <td>
                 <h4>SURAT PERINTAH PENUNJUKAN JAKSA PENUNTUT UMUM</h4>
                 <h4>UNTUK MENGIKUTI PERKEMBANGAN PENYIDIKAN</h4>
                 <h4>PERKARA TINDAK PIDANA</h4>
-                <h4>Nomor: {{ $p16->no_p16 }}</h4>
+                <h4>NOMOR: {{ $p16->no_p16 }}</h4>
         </tr>
     </table>
-    <table>
+    <table class="tb3">
         <tr style="vertical-align: top;">
             <th style="text-align: left;">Dasar</th>
             <td>1.</td>

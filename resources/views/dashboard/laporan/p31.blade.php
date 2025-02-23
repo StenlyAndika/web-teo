@@ -245,11 +245,7 @@
         </tr>
         <tr>
             <td>&nbsp;</td>
-            <td colspan="3" style="text-align: left"><u><strong>AMAR DENNY HARI, SH., MH</strong></u></td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td colspan="3" style="text-align: left"><strong>NIP. 19850325 200812 1 001</strong></td>
+            <td colspan="3" style="text-align: left"><u><strong>Wahyu Nugraha Efendi, SH., MH</strong></u></td>
         </tr>
     </table>
 </body>

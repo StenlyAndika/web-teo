@@ -17,7 +17,6 @@ class LaporanController extends Controller
 
         $pdf = PDF::loadView('dashboard.laporan.p31', ['p31' => $p31]);
         $pdf->setPaper(array(0,0,609.4488,935.433), 'portrait'); //F4
-        // $pdf->setPaper('A4', 'portrait'); //F4
 
         return $pdf->download('Laporan-P31-'. $p31->no_p31 .'.pdf');
     }
