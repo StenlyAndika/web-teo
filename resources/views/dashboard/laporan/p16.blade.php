@@ -74,7 +74,7 @@
     </table>
     <table class="tb3">
         <tr style="vertical-align: top;">
-            <th style="text-align: left;">Dasar</th>
+            <td style="text-align: left;">Dasar</td>
             <td>1.</td>
             <td colspan="3">Undang-Undang Republik Indonesia Nomor 8 Tahun 1981 tentang Kitab Undang-Undang Hukum Acara
                 Pidana (KUHP) Pasal 8 (3) a, Pasal 14a, b, Pasal 14 huruf a, b, l, Pasal 109, Pasal 110 dan Pasal 138, 20
@@ -142,7 +142,7 @@
             <th colspan="5">&nbsp;</th>
         </tr>
         <tr style="vertical-align: top;">
-            <th style="text-align: left;">Pertimbangan</th>
+            <td style="text-align: left;">Pertimbangan</td>
             <td>1.</td>
             <td colspan="3">Bahwa dengan diterimanya pemberitahuan dimulainya penyidikan, dipandang perlu untuk
                 menugaskan seseorang / beberapa orang Jaksa PU untuk mengikuti perkembangan penyidikan dan meneliti hasil
@@ -171,7 +171,7 @@
             )->get();
         @endphp
         <tr>
-            <th colspan="2" style="text-align: left;">Kepada</th>
+            <td colspan="2" style="text-align: left;">Kepada</td>
             <td class="tb1">Nama Jaksa</td>
             <td class="tb1">Pangkat</td>
             <td class="tb1">NIP</td>
@@ -191,7 +191,7 @@
             <th colspan="5">&nbsp;</th>
         </tr>
         <tr>
-            <th style="text-align: left;">Untuk</th>
+            <td style="text-align: left;">Untuk</td>
             <td colspan="4">1. Mengikuti perkembangan penyidikan</td>
         </tr>
         <tr>
