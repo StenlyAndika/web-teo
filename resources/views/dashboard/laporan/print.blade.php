@@ -139,11 +139,10 @@
         <style>
             .right-align {
                 width: 100%;
-                text-align: left;
             }
 
             .left {
-                width: 75%;
+                width: 50%;
             }
         </style>
         <br>
@@ -151,11 +150,13 @@
         <table class="right-align">
             <tr>
                 <td>&nbsp;</td>
-                <td>Sungai Penuh, {{ Carbon\Carbon::now()->format('d-m-Y') }}</td>
+                <td class="left">&nbsp;</td>
+                <td style="text-align: center">Sungai Penuh, {{ Carbon\Carbon::now()->format('d-m-Y') }}</td>
             </tr>
             <tr>
-                <td class="left">Mengetahui<br>Kepala Kejaksaan Negeri Sungai Penuh</td>
-                <td>Kepala Seksi Tindak Pidana Umum<br>Kejaksaan Negeri Sungai Penuh</td>
+                <td style="text-align: center">Mengetahui<br>Kepala Kejaksaan Negeri Sungai Penuh</td>
+                <td>&nbsp;</td>
+                <td style="text-align: center">Kepala Seksi Tindak Pidana Umum<br>Kejaksaan Negeri Sungai Penuh</td>
             </tr>
             <tr>
                 <td>&nbsp;<br>&nbsp;</td>
@@ -163,8 +164,9 @@
                 <td>&nbsp;<br>&nbsp;</td>
             </tr>
             <tr>
-                <td>Sukma Djaya Negara, SH., M.Hum</td>
-                <td>Wahyu Nugraha Efendi., SH., MH</td>
+                <td style="text-align: center">Sukma Djaya Negara, SH., M.Hum</td>
+                <td>&nbsp;</td>
+                <td style="text-align: center">Wahyu Nugraha Efendi., SH., MH</td>
             </tr>
         </table>
     </div>

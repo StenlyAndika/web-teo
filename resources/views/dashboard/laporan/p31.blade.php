@@ -233,7 +233,7 @@
         </tr>
         <tr>
             <td>&nbsp;</td>
-            <th colspan="3" style="text-align: left">AN. KEPALA KEJAKSAAN NEGERI SUNGAI PENUH<br>KEPALA SEKSI TINDAK PIDANA UMUM SELAKU PENUNTUT UMUM</th>
+            <th colspan="3" style="text-align: center">AN. KEPALA KEJAKSAAN NEGERI SUNGAI PENUH<br>KEPALA SEKSI TINDAK PIDANA UMUM SELAKU PENUNTUT UMUM</th>
         </tr>
         <tr>
             <td>&nbsp;</td>
@@ -245,7 +245,7 @@
         </tr>
         <tr>
             <td>&nbsp;</td>
-            <td colspan="3" style="text-align: left"><u><strong>Wahyu Nugraha Efendi, SH., MH</strong></u></td>
+            <td colspan="3" style="text-align: center"><u><strong>Wahyu Nugraha Efendi, SH., MH</strong></u></td>
         </tr>
     </table>
 </body>

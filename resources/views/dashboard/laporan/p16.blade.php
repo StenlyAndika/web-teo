@@ -237,7 +237,7 @@
         </tr>
         <tr>
             <td>&nbsp;</td>
-            <th colspan="3" style="text-align: left">Kepala Seksi Tindak Pidana Umum</th>
+            <th colspan="3" style="text-align: center">Kepala Seksi Tindak Pidana Umum</th>
         </tr>
         <tr>
             <td>&nbsp;</td>
@@ -249,7 +249,7 @@
         </tr>
         <tr>
             <td>&nbsp;</td>
-            <td colspan="3" style="text-align: left">Wahyu Nugraha Efendi, SH., MH</td>
+            <td colspan="3" style="text-align: center">Wahyu Nugraha Efendi, SH., MH</td>
         </tr>
     </table>
 </body>
