@@ -10,10 +10,14 @@ use Illuminate\Support\Facades\Auth;
 class AuthController extends Controller
 {
     public function index() {
-        $timestamp = strtotime(now());
-        $month = date('n', $timestamp);
-        return view('auth.login', [
-            'title' => 'KEJARI SUNGAI PENUH | Login'
+        return view('index', [
+            'title' => 'Penerimaan Peserta Didik Baru SMP N Kerinci'
+        ]);
+    }
+
+    public function success() {
+        return view('success', [
+            'title' => 'Penerimaan Peserta Didik Baru SMP N Kerinci'
         ]);
     }
 
