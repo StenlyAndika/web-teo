@@ -1,8 +1,10 @@
 <?php
 
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PPDBController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,18 +19,22 @@ use App\Http\Controllers\PPDBController;
 
 Route::get('/', [AuthController::class, 'index'])->name('welcome')->middleware('guest');
 Route::get('/pendaftaran-peserta-didik-baru-ta-2025-2026', [PPDBController::class, 'index'])->name('ppdb')->middleware('guest');
+Route::post('/pendaftaran-peserta-didik-baru-ta-2025-2026', [PPDBController::class, 'store'])->name('admin.ppdb.store');
 Route::get('/success', [AuthController::class, 'success'])->name('success')->middleware('guest');
-// Route::post('/login', [AuthController::class, 'authenticate'])->name('auth')->middleware('guest');
-// Route::post('/generate', [AuthController::class, 'generate'])->name('generateadmin')->middleware(['guest', 'checkadmin']);
 
-Route::post('/admin/master/ppdb', [PPDBController::class, 'store'])->name('admin.ppdb.store');
+Route::get('/login', [AuthController::class, 'login'])->name('login')->middleware('guest');
+Route::post('/auth', [AuthController::class, 'authenticate'])->name('auth')->middleware('guest');
+Route::post('/generate', [AuthController::class, 'generate'])->name('generateadmin')->middleware(['guest', 'checkadmin']);
 
-// Route::middleware(['admin'])->group(function () {
-//     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-//     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 
-//     Route::get('/admin/master/jaksa', [JaksaController::class, 'index'])->name('admin.jaksa.index');
-//     Route::post('/admin/master/jaksa', [JaksaController::class, 'store'])->name('admin.jaksa.store');
-//     Route::put('/admin/master/jaksa/{id}', [JaksaController::class, 'update'])->name('admin.jaksa.update');
-//     Route::delete('/admin/master/jaksa/{id}', [JaksaController::class, 'destroy'])->name('admin.jaksa.destroy');
-// });
+Route::post('/sendwhatsapp', [DashboardController::class, 'sendMessage'])->name('admin.send.wa')->middleware('guest');
+
+Route::middleware(['admin'])->group(function () {
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+
+    Route::get('/admin/ppdb', [PPDBController::class, 'ppdbData'])->name('admin.ppdb.index');
+    Route::get('/admin/ppdb/{id}', [PPDBController::class, 'ppdbDetail'])->name('admin.ppdb.detail');
+    Route::put('/admin/ppdb/{id}/lulus', [PPDBController::class, 'ppdbUpdateL'])->name('admin.ppdb.lulus');
+    Route::put('/admin/ppdb/{id}/gagal', [PPDBController::class, 'ppdbUpdateG'])->name('admin.ppdb.gagal');
+});

@@ -14,9 +14,8 @@
                     </svg>
                 </button>
                 <a href="{{ route('admin.dashboard') }}" class="flex ms-2 md:me-24">
-                    <img src="/img/tablogo.png" class="h-8 me-3" alt="FlowBite Logo" />
-                    <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap">Kejari Sungai
-                        Penuh</span>
+                    <img src="/img/tablogo.svg" class="h-8 me-3" alt="FlowBite Logo" />
+                    <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap">SMP Negeri 29 Kerinci</span>
                 </a>
             </div>
             <div class="flex items-center">
@@ -26,7 +25,7 @@
                             class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300"
                             aria-expanded="false" data-dropdown-toggle="dropdown-user">
                             <span class="sr-only">Open user menu</span>
-                            <img class="w-8 h-8 rounded-full" src="{{ auth()->user()->is_root == 1 ? '/img/root.png' : '/img/admin.png' }}" alt="user photo">
+                            <img class="w-8 h-8 rounded-full" src="/img/admin.png" alt="user photo">
                         </button>
                     </div>
                     <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow"
@@ -60,7 +59,7 @@
         <ul class="space-y-2 font-medium">
             <li>
                 <a href="{{ route('admin.dashboard') }}"
-                    class="flex items-center p-2 text-gray-900 border border-blue-300 rounded-lg hover:bg-blue-100 hover:font-semibold group {{ Request::is('/') ? 'text-green-800 border border-green-300 rounded-lg bg-green-100' : '' }}">
+                    class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-blue-100 hover:font-semibold group {{ Request::is('/') ? 'text-green-800 border border-green-300 rounded-lg bg-green-100' : '' }}">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
                         <path
                             d="M19.5 21a3 3 0 0 0 3-3v-4.5a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3V18a3 3 0 0 0 3 3h15ZM1.5 10.146V6a3 3 0 0 1 3-3h5.379a2.25 2.25 0 0 1 1.59.659l2.122 2.121c.14.141.331.22.53.22H19.5a3 3 0 0 1 3 3v1.146A4.483 4.483 0 0 0 19.5 9h-15a4.483 4.483 0 0 0-3 1.146Z" />
@@ -69,110 +68,24 @@
                 </a>
             </li>
             <li class="border-b border-gray-200">
-                @cannot('root')
-                <button type="button"
-                    class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-blue-100 hover:font-semibold
-                    {{ Request::is('admin/master/*') ? 'border-b border-gray-20' : '' }}"
-                    aria-controls="dropdown-example6" data-collapse-toggle="dropdown-example6" aria-expanded="{{ Request::is('admin/master/*') ? 'true' : 'false' }}">
-                    <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Data Master</span>
-                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                        fill="none"viewBox="0 0 10 6">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="m1 1 4 4 4-4" />
-                    </svg>
-                </button>
-                <ul id="dropdown-example6" class="py-1 space-y-1 {{ Request::is('admin/master/*') ? '' : 'hidden' }}">
-                    <li>
-                        <a href="{{ route('admin.instansipenyidik.index') }}"
-                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-blue-100 hover:font-semibold {{ Request::is('admin/master/instansipenyidik') ? 'text-green-800 border border-green-300 rounded-lg bg-green-100' : '' }}">Data Instansi Penyidik</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('admin.instansipelaksana.index') }}"
-                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-blue-100 hover:font-semibold {{ Request::is('admin/master/instansipelaksana') ? 'text-green-800 border border-green-300 rounded-lg bg-green-100' : '' }}">Data Instansi Pelaksana</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('admin.wilayahpelimpahan.index') }}"
-                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-blue-100 hover:font-semibold {{ Request::is('admin/master/wilayahpelimpahan') ? 'text-green-800 border border-green-300 rounded-lg bg-green-100' : '' }}">Data Wilayah Pelimpahan</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('admin.jaksa.index') }}"
-                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-blue-100 hover:font-semibold {{ Request::is('admin/master/jaksa') ? 'text-green-800 border border-green-300 rounded-lg bg-green-100' : '' }}">Data
-                            Jaksa</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <p class="flex items-center p-2 text-gray-900 border border-blue-300 rounded-lg font-semibold">
+                <a href="{{ route('admin.ppdb.index') }}"
+                    class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-blue-100 hover:font-semibold {{ Request::is('admin/ppdb*') ? 'text-green-800 border border-green-300 rounded-lg bg-green-100' : '' }}">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
                         <path
                             d="M19.5 21a3 3 0 0 0 3-3v-4.5a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3V18a3 3 0 0 0 3 3h15ZM1.5 10.146V6a3 3 0 0 1 3-3h5.379a2.25 2.25 0 0 1 1.59.659l2.122 2.121c.14.141.331.22.53.22H19.5a3 3 0 0 1 3 3v1.146A4.483 4.483 0 0 0 19.5 9h-15a4.483 4.483 0 0 0-3 1.146Z" />
                     </svg>
-                    <span class="ms-3">PRA PENUNTUTAN</span>
-                </p>
-            </li>
-            <li class="border-b border-gray-200">
-                <button type="button"
-                    class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-blue-100 hover:font-semibold
-                    {{ Request::is('admin/prapen/penspdp*') ? 'border-b border-gray-20' : '' }}"
-                    aria-controls="dropdown-example" data-collapse-toggle="dropdown-example" aria-expanded="{{ Request::is('admin/prapen/penspdp*') ? 'true' : 'false' }}">
-                    <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Penerimaan SPDP</span>
-                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                        fill="none"viewBox="0 0 10 6">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="m1 1 4 4 4-4" />
-                    </svg>
-                </button>
-                <ul id="dropdown-example" class="py-1 space-y-1 {{ Request::is('admin/prapen/penspdp*') ? '' : 'hidden' }}">
-                    <li>
-                        <a href="{{ route('admin.penspdp.index') }}"
-                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-blue-100 hover:font-semibold {{ Request::is('admin/prapen/penspdp*') ? 'text-green-800 border border-green-300 rounded-lg bg-green-100' : '' }}">Pemberitahuan
-                            Dimulainya Penyidikan</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="border-b border-gray-200">
-                <button type="button"
-                    class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-blue-100 hover:font-semibold
-                    {{ Request::is('admin/prapen/penbt1*') ? 'border-b border-gray-20' : '' }}"
-                    aria-controls="dropdown-example2" data-collapse-toggle="dropdown-example2" aria-expanded="{{ Request::is('admin/prapen/penbt1*') ? 'true' : 'false' }}">
-                    <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Penerimaan Berkas</span>
-                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                        fill="none"viewBox="0 0 10 6">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="m1 1 4 4 4-4" />
-                    </svg>
-                </button>
-                <ul id="dropdown-example2" class="py-1 space-y-1 {{ Request::is('admin/prapen/penbt1*') ? '' : 'hidden' }}">
-                    <li>
-                        <a href="{{ route('admin.beritaacara.index') }}"
-                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-blue-100 hover:font-semibold {{ Request::is('admin/prapen/penbt1/beritaacara*') ? 'text-green-800 border border-green-300 rounded-lg bg-green-100' : '' }}">Berkas Berita Acara Pelimpahan</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('admin.penbt1.index') }}"
-                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-blue-100 hover:font-semibold {{ Request::is('admin/prapen/penbt1/pbp*') ? 'text-green-800 border border-green-300 rounded-lg bg-green-100' : '' }}">Penerimaan
-                            Berkas Perkara</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="border-b border-gray-200">
-                <a href="{{ route('admin.pelimpahan.index') }}"
-                    class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-blue-100 hover:font-semibold {{ Request::is('admin/prapen/pelimpahan*') ? 'text-green-800 border border-green-300 rounded-lg bg-green-100' : '' }}">
-                    <span class="ms-3">Penyelesaian Tahap Pra Penuntutan</span>
+                    <span class="ms-3">PPDB</span>
                 </a>
             </li>
-            @endcan
-            <li>
-                <p class="flex items-center p-2 text-gray-900 border border-blue-300 rounded-lg font-semibold">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+            <li class="border-b border-gray-200">
+                <a href=""
+                    class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-blue-100 hover:font-semibold
+                    {{-- {{ Request::is('admin/laporan/pelimpahan*') ? 'text-green-800 border border-green-300 rounded-lg bg-green-100' : '' }} --}}
+                     ">
+                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
                         <path
                             d="M19.5 21a3 3 0 0 0 3-3v-4.5a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3V18a3 3 0 0 0 3 3h15ZM1.5 10.146V6a3 3 0 0 1 3-3h5.379a2.25 2.25 0 0 1 1.59.659l2.122 2.121c.14.141.331.22.53.22H19.5a3 3 0 0 1 3 3v1.146A4.483 4.483 0 0 0 19.5 9h-15a4.483 4.483 0 0 0-3 1.146Z" />
                     </svg>
-                    <span class="ms-3">LAPORAN</span>
-                </p>
-            </li>
-            <li class="border-b border-gray-200">
-                <a href="{{ route('admin.laporan.pelimpahan') }}"
-                    class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-blue-100 hover:font-semibold {{ Request::is('admin/laporan/pelimpahan*') ? 'text-green-800 border border-green-300 rounded-lg bg-green-100' : '' }}">
                     <span class="ms-3">Laporan Pelimpahan</span>
                 </a>
             </li>

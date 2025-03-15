@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('upload_kk');
             $table->string('upload_akta');
             $table->string('upload_ijazah');
-            $table->string('status');
+            $table->integer('status');
         });
     }
 

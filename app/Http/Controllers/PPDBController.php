@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\ModelDataAyah;
 use App\Models\ModelDataPPDB;
 use App\Models\ModelDataSiswa;
+use Illuminate\Support\Facades\Http;
 
 class PPDBController extends Controller
 {
@@ -42,6 +43,13 @@ class PPDBController extends Controller
             'title' => 'Data Penerimaan Peserta Didik Baru',
             'pekerjaan' => $pekerjaan,
             'pendidikan' => $pendidikan
+        ]);
+    }
+
+    public function ppdbData() {
+        return view('dashboard.ppdb.index', [
+            'title' => 'Data Pendaftar PPDB SMP Negeri 29 Kerinci Tahun Ajaran 2025/2026',
+            'ppdb' => ModelDataPPDB::all()
         ]);
     }
 
@@ -114,21 +122,21 @@ class PPDBController extends Controller
             $validatedDataPPDB = $request->validate($rulesPpdb);
 
             if ($request->file('upload_kk')) {
-                $validatedDataPPDB['upload_kk'] = $request->file('upload_kk')->store('upload/upload_kk');
+                $validatedDataPPDB['upload_kk'] = $request->file('upload_kk')->store('public/upload/upload_kk');
             }
 
             if ($request->file('upload_akta')) {
-                $validatedDataPPDB['upload_akta'] = $request->file('upload_akta')->store('upload/upload_akta');
+                $validatedDataPPDB['upload_akta'] = $request->file('upload_akta')->store('public/upload/upload_akta');
             }
 
             if ($request->file('upload_ijazah')) {
-                $validatedDataPPDB['upload_ijazah'] = $request->file('upload_ijazah')->store('upload/upload_ijazah');
+                $validatedDataPPDB['upload_ijazah'] = $request->file('upload_ijazah')->store('public/upload/upload_ijazah');
             }
 
             $validatedDataPPDB['id_data_siswa'] = $new_record_siswa->id;
             $validatedDataPPDB['id_data_ayah'] = $new_record_ayah->id;
             $validatedDataPPDB['id_data_ibu'] = $new_record_ibu->id;
-            $validatedDataPPDB['status'] = 'Menunggu Verifikasi';
+            $validatedDataPPDB['status'] = 0;
 
             ModelDataPPDB::create($validatedDataPPDB);
 
@@ -136,37 +144,56 @@ class PPDBController extends Controller
         } catch (\Exception $e) {
             return redirect()->back()->with(['toast_error' => $e->getMessage()]);
         }
+    }
 
-        return redirect()->route('admin.jaksa.index')->with('toast_success', 'Data berhasil ditambah!');
+    public function ppdbDetail($id) {
+        return view('dashboard.ppdb.detail', [
+            'title' => 'Detail Data Pendaftar PPDB SMP Negeri 29 Kerinci Tahun Ajaran 2025/2026',
+            'ppdb' => ModelDataPPDB::where('id_data_ppdb', $id)->first()
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function ppdbUpdateL($id)
     {
-        $rules = [
-            'nip' => 'required',
-            'nama' => 'required',
-            'pangkat' => 'required',
-            'alamat' => 'required',
-            'email' => 'required',
-            'notelp' => 'required'
-        ];
+        $validatedDataPPDB['status'] = 1;
 
-        $validatedData = $request->validate($rules);
+        ModelDataPPDB::where('id_data_ppdb', $id)->update($validatedDataPPDB);
 
-        ModelJaksa::where('id_jaksa', $id)->update($validatedData);
+        $tempPpdb = ModelDataPPDB::where('id_data_ppdb', $id)->first();
+        $siswa = ModelDataSiswa::where('id_data_siswa', $tempPpdb->id_data_siswa)->first();
 
-        return redirect()->route('admin.jaksa.index')->with('toast_success', 'Data berhasil diupdate!');
+        $phone = '+62' . substr($siswa->no_telp, 1);
+        $message = 'Selamat ' . $siswa->nama . ', kamu lolos pendaftaran peserta didik baru pada SMP Negeri 29 Kerinci.';
+
+        $response = Http::post('http://127.0.0.1:3000/api/send', [
+            'phone' => $phone,
+            'message' => $message
+        ]);
+
+        return redirect()->route('admin.ppdb.index')->with('toast_success', 'Kelulusan berhasil dikonfirmasi!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function ppdbUpdateG($id)
     {
-        ModelJaksa::where('id_jaksa', $id)->delete();
-        return redirect()->route('admin.jaksa.index')->with('toast_success', 'Data berhasil dihapus!');
+        $validatedDataPPDB['status'] = 2;
+
+        ModelDataPPDB::where('id_data_ppdb', $id)->update($validatedDataPPDB);
+
+        $tempPpdb = ModelDataPPDB::where('id_data_ppdb', $id)->first();
+        $siswa = ModelDataSiswa::where('id_data_siswa', $tempPpdb->id_data_siswa)->first();
+
+        $phone = '+62' . substr($siswa->no_telp, 1);
+        $message = 'Mohon maaf ' . $siswa->nama . ', kamu belum lolos pendaftaran peserta didik baru pada SMP Negeri 29 Kerinci.';
+
+        $response = Http::post('http://127.0.0.1:3000/api/send', [
+            'phone' => $phone,
+            'message' => $message
+        ]);
+
+        return redirect()->route('admin.ppdb.index')->with('toast_success', 'Kelulusan berhasil dikonfirmasi!');
     }
+
 }

@@ -2,17 +2,9 @@
 
 @section('container')
     <div id="sticky-banner" tabindex="-1"
-        class="top-0 start-0 z-50 flex justify-between w-full p-4 border-b border-gray-200">
+        class="top-0 mb-4 start-0 z-50 flex justify-between w-full p-4 border-b border-gray-200">
         <h1 class="text-2xl font-semibold text-gray-900">{{ $title }}</h1>
     </div>
-
-    <button data-modal-target="default-modal" data-modal-toggle="default-modal"
-        class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold rounded-lg text-sm px-5 py-2.5 text-center mt-2 mb-4"
-        type="button">
-        Data Baru
-    </button>
-
-    @include('dashboard.jaksa.add')
 
     @if (session('toast_success'))
         <div id="alertDialog"
@@ -31,29 +23,23 @@
         </div>
     @endif
 
-    <table id="search-table" class="mt-2 w-full text-sm text-left rtl:text-right text-gray-500">
+    <table id="search-table" class="mt-4 w-full text-sm text-left rtl:text-right text-gray-500">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50">
             <tr>
                 <th scope="col" class="px-6 py-3">
                     No
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Nip
+                    NISN
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Nama
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Pangkat
+                    Asal Sekolah
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Alamat
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Email
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    No Telp
+                    Verifikasi Data
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Opsi
@@ -61,44 +47,51 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($jaksa as $item)
+            @foreach ($ppdb as $item)
                 <tr class="odd:bg-white even:bg-gray-50 border-b">
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                         {{ $loop->iteration }}
                     </th>
+                    @php
+                        $a = App\Models\ModelDataSiswa::where('id_data_siswa', $item->id_data_siswa)->first();
+                    @endphp
                     <td class="px-6 py-4">
-                        {{ $item->nip }}
+                        {{ $a->nisn }}
                     </td>
                     <td class="px-6 py-4">
-                        {{ $item->nama }}
+                        {{ $a->nama }}
                     </td>
                     <td class="px-6 py-4">
-                        {{ $item->pangkat }}
+                        {{ $a->asal_sekolah }}
                     </td>
                     <td class="px-6 py-4">
-                        {{ $item->alamat }}
-                    </td>
-                    <td class="px-6 py-4">
-                        {{ $item->email }}
-                    </td>
-                    <td class="px-6 py-4">
-                        {{ $item->notelp }}
+                        <a href="{{ route('admin.ppdb.detail', $item->id_data_ppdb) }}"
+                            class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold rounded-lg text-sm px-5 py-2.5 text-center">Lihat
+                            Data</a>
                     </td>
                     <td class="flex justify-start space-x-2">
-                        <button data-modal-target="popup-edit-{{ $item->id_jaksa }}"
-                            data-modal-toggle="popup-edit-{{ $item->id_jaksa }}"
-                            class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold rounded-lg text-sm px-5 py-2.5 text-center"
-                            type="button">
-                            Edit
-                        </button>
-                        @include('dashboard.jaksa.show')
-                        <button data-modal-target="popup-delete-{{ $item->id_jaksa }}"
-                            data-modal-toggle="popup-delete-{{ $item->id_jaksa }}"
-                            class="block text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold rounded-lg text-sm px-5 py-2.5 text-center"
-                            type="button">
-                            Hapus
-                        </button>
-                        @include('dashboard.jaksa.delete')
+                        @if ($item->status == 0)
+                            <button data-modal-target="popup-delete-{{ $item->id_data_ppdb }}"
+                                data-modal-toggle="popup-delete-{{ $item->id_data_ppdb }}"
+                                class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold rounded-lg text-sm px-5 py-2.5 text-center"
+                                type="button">
+                                Konfirmasi Penerimaan
+                            </button>
+                            @include('dashboard.ppdb.konfirmasi')
+                        @elseif ($item->status == 1)
+                            <button
+                                class="block text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold rounded-lg text-sm px-5 py-2.5 text-center"
+                                type="button">
+                                Peserta Lulus
+                            </button>
+                        @else
+                            <button
+                                class="block text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold rounded-lg text-sm px-5 py-2.5 text-center"
+                                type="button">
+                                Peserta Tidak Lulus
+                            </button>
+                        @endif
+
                     </td>
                 </tr>
             @endforeach
