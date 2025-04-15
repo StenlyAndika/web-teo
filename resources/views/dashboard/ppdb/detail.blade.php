@@ -7,8 +7,8 @@
     </div>
     @php
         $siswa = App\Models\ModelDataSiswa::where('id_data_siswa', $ppdb->id_data_siswa)->first();
-        $ayah = App\Models\ModelDataAyah::where('id_data_ayah', $ppdb->id_data_ayah)->first();
-        $ibu = App\Models\ModelDataIbu::where('id_data_ibu', $ppdb->id_data_ibu)->first();
+        $ayah = App\Models\ModelDataAyah::where('id_data_ayah', $ppdb->id_data_siswa)->first();
+        $ibu = App\Models\ModelDataIbu::where('id_data_ibu', $ppdb->id_data_siswa)->first();
     @endphp
     <div class="mt-2">
         <div id="sticky-banner" tabindex="-1"
