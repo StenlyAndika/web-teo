@@ -14,8 +14,6 @@ return new class extends Migration
         Schema::create('data_ppdb', function (Blueprint $table) {
             $table->integer('id_data_ppdb')->autoIncrement();
             $table->integer('id_data_siswa');
-            $table->integer('id_data_ayah');
-            $table->integer('id_data_ibu');
             $table->string('upload_kk');
             $table->string('upload_akta');
             $table->string('upload_ijazah');
