@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('upload_akta');
             $table->string('upload_ijazah');
             $table->integer('status');
+            $table->timestamps();
         });
     }
 

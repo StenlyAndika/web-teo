@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PPDBController;
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\DashboardController;
 
 /*
@@ -26,7 +27,6 @@ Route::get('/login', [AuthController::class, 'login'])->name('login')->middlewar
 Route::post('/auth', [AuthController::class, 'authenticate'])->name('auth')->middleware('guest');
 Route::post('/generate', [AuthController::class, 'generate'])->name('generateadmin')->middleware(['guest', 'checkadmin']);
 
-
 Route::post('/sendwhatsapp', [DashboardController::class, 'sendMessage'])->name('admin.send.wa')->middleware('guest');
 
 Route::middleware(['admin'])->group(function () {
@@ -37,4 +37,7 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/admin/ppdb/{id}', [PPDBController::class, 'ppdbDetail'])->name('admin.ppdb.detail');
     Route::put('/admin/ppdb/{id}/lulus', [PPDBController::class, 'ppdbUpdateL'])->name('admin.ppdb.lulus');
     Route::put('/admin/ppdb/{id}/gagal', [PPDBController::class, 'ppdbUpdateG'])->name('admin.ppdb.gagal');
+
+    Route::get('/admin/laporan/ppdb', [LaporanController::class, 'laporan_ppdb'])->name('admin.laporan.ppdb');
+    Route::get('/admin/laporan/ppdb/print/{bln}', [LaporanController::class, 'laporan_ppdb_print'])->name('admin.ppdb.print');
 });
