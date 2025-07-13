@@ -13,7 +13,7 @@
                         </path>
                     </svg>
                 </button>
-                <a href="{{ route('admin.dashboard') }}" class="flex ms-2 md:me-24">
+                <a href="{{ route('dashboard') }}" class="flex ms-2 md:me-24">
                     <img src="/img/tablogo.svg" class="h-8 me-3" alt="FlowBite Logo" />
                     <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap">SMP Negeri 29 Kerinci</span>
                 </a>
@@ -58,7 +58,7 @@
     <div class="h-full px-3 pb-4 overflow-y-auto bg-white">
         <ul class="space-y-2 font-medium">
             <li>
-                <a href="{{ route('admin.dashboard') }}"
+                <a href="{{ route('dashboard') }}"
                     class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-blue-100 hover:font-semibold group {{ Request::is('/') ? 'text-green-800 border border-green-300 rounded-lg bg-green-100' : '' }}">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
                         <path
@@ -67,27 +67,51 @@
                     <span class="ms-3">DASHBOARD</span>
                 </a>
             </li>
-            <li class="border-b border-gray-200">
-                <a href="{{ route('admin.ppdb.index') }}"
-                    class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-blue-100 hover:font-semibold {{ Request::is('admin/ppdb*') ? 'text-green-800 border border-green-300 rounded-lg bg-green-100' : '' }}">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
-                        <path
-                            d="M19.5 21a3 3 0 0 0 3-3v-4.5a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3V18a3 3 0 0 0 3 3h15ZM1.5 10.146V6a3 3 0 0 1 3-3h5.379a2.25 2.25 0 0 1 1.59.659l2.122 2.121c.14.141.331.22.53.22H19.5a3 3 0 0 1 3 3v1.146A4.483 4.483 0 0 0 19.5 9h-15a4.483 4.483 0 0 0-3 1.146Z" />
-                    </svg>
-                    <span class="ms-3">PPDB</span>
-                </a>
-            </li>
-            <li class="border-b border-gray-200">
-                <a href="{{ route('admin.laporan.ppdb') }}"
-                    class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-blue-100 hover:font-semibold
-                    {{ Request::is('admin/laporan/ppdb*') ? 'text-green-800 border border-green-300 rounded-lg bg-green-100' : '' }}">
-                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
-                        <path
-                            d="M19.5 21a3 3 0 0 0 3-3v-4.5a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3V18a3 3 0 0 0 3 3h15ZM1.5 10.146V6a3 3 0 0 1 3-3h5.379a2.25 2.25 0 0 1 1.59.659l2.122 2.121c.14.141.331.22.53.22H19.5a3 3 0 0 1 3 3v1.146A4.483 4.483 0 0 0 19.5 9h-15a4.483 4.483 0 0 0-3 1.146Z" />
-                    </svg>
-                    <span class="ms-3">Laporan PPDB</span>
-                </a>
-            </li>
+            @cannot('admin')
+                <li class="border-b border-gray-200">
+                    <a href="{{ route('ppdb') }}"
+                        class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-blue-100 hover:font-semibold {{ Request::is('ppdb*') ? 'text-green-800 border border-green-300 rounded-lg bg-green-100' : '' }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                            <path
+                                d="M19.5 21a3 3 0 0 0 3-3v-4.5a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3V18a3 3 0 0 0 3 3h15ZM1.5 10.146V6a3 3 0 0 1 3-3h5.379a2.25 2.25 0 0 1 1.59.659l2.122 2.121c.14.141.331.22.53.22H19.5a3 3 0 0 1 3 3v1.146A4.483 4.483 0 0 0 19.5 9h-15a4.483 4.483 0 0 0-3 1.146Z" />
+                        </svg>
+                        <span class="ms-3">PENDAFTARAN</span>
+                    </a>
+                </li>
+            @endcannot
+            @can('admin')
+                <li class="border-b border-gray-200">
+                    <a href="{{ route('admin.user.index') }}"
+                        class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-blue-100 hover:font-semibold {{ Request::is('admin/user*') ? 'text-green-800 border border-green-300 rounded-lg bg-green-100' : '' }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                            <path
+                                d="M19.5 21a3 3 0 0 0 3-3v-4.5a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3V18a3 3 0 0 0 3 3h15ZM1.5 10.146V6a3 3 0 0 1 3-3h5.379a2.25 2.25 0 0 1 1.59.659l2.122 2.121c.14.141.331.22.53.22H19.5a3 3 0 0 1 3 3v1.146A4.483 4.483 0 0 0 19.5 9h-15a4.483 4.483 0 0 0-3 1.146Z" />
+                        </svg>
+                        <span class="ms-3">DATA AKUN SISWA</span>
+                    </a>
+                </li>
+                <li class="border-b border-gray-200">
+                    <a href="{{ route('admin.ppdb.index') }}"
+                        class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-blue-100 hover:font-semibold {{ Request::is('admin/ppdb*') ? 'text-green-800 border border-green-300 rounded-lg bg-green-100' : '' }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                            <path
+                                d="M19.5 21a3 3 0 0 0 3-3v-4.5a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3V18a3 3 0 0 0 3 3h15ZM1.5 10.146V6a3 3 0 0 1 3-3h5.379a2.25 2.25 0 0 1 1.59.659l2.122 2.121c.14.141.331.22.53.22H19.5a3 3 0 0 1 3 3v1.146A4.483 4.483 0 0 0 19.5 9h-15a4.483 4.483 0 0 0-3 1.146Z" />
+                        </svg>
+                        <span class="ms-3">PPDB</span>
+                    </a>
+                </li>
+                <li class="border-b border-gray-200">
+                    <a href="{{ route('admin.laporan.ppdb') }}"
+                        class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-blue-100 hover:font-semibold
+                        {{ Request::is('admin/laporan/ppdb*') ? 'text-green-800 border border-green-300 rounded-lg bg-green-100' : '' }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                            <path
+                                d="M19.5 21a3 3 0 0 0 3-3v-4.5a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3V18a3 3 0 0 0 3 3h15ZM1.5 10.146V6a3 3 0 0 1 3-3h5.379a2.25 2.25 0 0 1 1.59.659l2.122 2.121c.14.141.331.22.53.22H19.5a3 3 0 0 1 3 3v1.146A4.483 4.483 0 0 0 19.5 9h-15a4.483 4.483 0 0 0-3 1.146Z" />
+                        </svg>
+                        <span class="ms-3">Laporan PPDB</span>
+                    </a>
+                </li>
+            @endcan
         </ul>
     </div>
 </aside>

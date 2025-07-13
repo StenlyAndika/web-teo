@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('data_ppdb', function (Blueprint $table) {
             $table->integer('id_data_ppdb')->autoIncrement();
-            $table->integer('id_data_siswa');
-            $table->string('upload_kk');
-            $table->string('upload_akta');
-            $table->string('upload_ijazah');
-            $table->integer('status');
+            $table->integer('id_data_siswa')->nullable();
+            $table->string('upload_kk')->nullable();
+            $table->string('upload_akta')->nullable();
+            $table->string('upload_ijazah')->nullable();
+            $table->integer('status')->nullable();
             $table->timestamps();
         });
     }

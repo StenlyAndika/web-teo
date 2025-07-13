@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class IsRoot
+class IsSiswa
 {
     /**
      * Handle an incoming request.
@@ -16,7 +16,7 @@ class IsRoot
      */
     public function handle(Request $request, Closure $next)
     {
-        if(!auth()->check() || !auth()->user()->is_root) {
+        if(!auth()->check() || !auth()->user()->is_siswa) {
             abort(404, 'Not Found.');
         }
         return $next($request);

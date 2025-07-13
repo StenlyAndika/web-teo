@@ -39,9 +39,10 @@ class PPDBController extends Controller
             'S3'
         ];
 
-        return view('ppdb', [
+        return view('dashboard.ppdb.ppdb', [
             'title' => 'Data Penerimaan Peserta Didik Baru',
             'pekerjaan' => $pekerjaan,
+            'siswa' => ModelDataSiswa::where('nisn', auth()->user()->nisn)->first(),
             'pendidikan' => $pendidikan
         ]);
     }
@@ -75,7 +76,8 @@ class PPDBController extends Controller
             $validatedDataSiswa = $request->validate($rulesSiswa);
             $validatedDataSiswa['tgl_lahir'] = date('Y-m-d', strtotime($validatedDataSiswa['tgl_lahir']));
 
-            $new_record_siswa = ModelDataSiswa::create($validatedDataSiswa);
+            ModelDataSiswa::where('id_data_siswa', $request->id_data_siswa)->update($validatedDataSiswa);
+            // $new_record_siswa = ModelDataSiswa::create($validatedDataSiswa);
 
             $rulesAyah = [
                 'nik_ayah' => 'required',
@@ -86,7 +88,7 @@ class PPDBController extends Controller
             ];
 
             $validatedDataAyah = $request->validate($rulesAyah);
-            $validatedDataAyah['id_data_siswa'] = $new_record_siswa->id;
+            $validatedDataAyah['id_data_siswa'] = $request->id_data_siswa;
             $validatedDataAyah['nik'] = $validatedDataAyah['nik_ayah'];
             $validatedDataAyah['nama'] = $validatedDataAyah['nama_ayah'];
             $validatedDataAyah['pekerjaan'] = $validatedDataAyah['pekerjaan_ayah'];
@@ -104,7 +106,7 @@ class PPDBController extends Controller
             ];
 
             $validatedDataIbu = $request->validate($rulesIbu);
-            $validatedDataIbu['id_data_siswa'] = $new_record_siswa->id;
+            $validatedDataIbu['id_data_siswa'] = $request->id_data_siswa;
             $validatedDataIbu['nik'] = $validatedDataIbu['nik_ibu'];
             $validatedDataIbu['nama'] = $validatedDataIbu['nama_ibu'];
             $validatedDataIbu['pekerjaan'] = $validatedDataIbu['pekerjaan_ibu'];
@@ -133,7 +135,7 @@ class PPDBController extends Controller
                 $validatedDataPPDB['upload_ijazah'] = $request->file('upload_ijazah')->store('public/upload/upload_ijazah');
             }
 
-            $validatedDataPPDB['id_data_siswa'] = $new_record_siswa->id;
+            $validatedDataPPDB['id_data_siswa'] = $request->id_data_siswa;
             $validatedDataPPDB['id_data_ayah'] = $new_record_ayah->id;
             $validatedDataPPDB['id_data_ibu'] = $new_record_ibu->id;
             $validatedDataPPDB['status'] = 0;

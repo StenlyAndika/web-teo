@@ -5,12 +5,20 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\ModelDataSiswa;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
     public function index() {
         return view('index', [
+            'title' => 'Penerimaan Peserta Didik Baru SMP N Kerinci'
+        ]);
+    }
+
+    public function daftar() {
+        return view('auth.daftar', [
             'title' => 'Penerimaan Peserta Didik Baru SMP N Kerinci'
         ]);
     }
@@ -27,13 +35,40 @@ class AuthController extends Controller
         ]);
     }
 
+    public function daftar_akun(Request $request) {
+        $validated = $request->validate([
+            'nisn' => 'required',
+            'nama' => 'required',
+            'username' => 'required',
+            'password' => 'required',
+        ]);
+
+        $validated['password'] = bcrypt($validated['password']);
+        $validated['is_siswa'] = 0;
+        $validated['is_admin'] = 0;
+
+        $rulesSiswa = [
+            'nisn' => 'required',
+            'nama' => 'required',
+            'no_telp' => 'required',
+        ];
+
+        $validatedDataSiswa = $request->validate($rulesSiswa);
+
+        ModelDataSiswa::create($validatedDataSiswa);
+
+        User::create($validated);
+
+        return redirect()->route('welcome')->with('toast_success', 'Akun berhasil dibuat! Mohon menunggu verifikasi admin.');
+    }
+
     public function generate()
     {
         $validated['username'] = 'admin';
         $validated['password'] = bcrypt('admin');
         $validated['nama'] = 'Admin';
+        $validated['is_siswa'] = '0';
         $validated['is_admin'] = '1';
-        $validated['is_root'] = '0';
 
         User::create($validated);
 
@@ -49,17 +84,29 @@ class AuthController extends Controller
             return back()->with('toast_error', 'Password tidak boleh kosong!');
         }
 
-        $credentials = $request->validate([
-            'username' => 'required',
-            'password' => 'required'
-        ]);
+        // Find user by username
+        $user = User::where('username', $request->username)->first();
 
-        if(Auth::attempt($credentials)) {
-            $request->session()->regenerate();
+        // If user found, proceed to check role and password
+        if ($user) {
+            // If user exists but both is_siswa and is_admin are 0
+            if ($user->is_siswa != 1 && $user->is_admin != 1) {
+                return redirect('login')->with('toast_error', 'Akun belum diverifikasi.');
+            }
 
-            return redirect()->intended('/dashboard')->with('toast_success', 'Login Berhasil<br>Selamat Datang '.ucfirst(auth()->user()->username));
+            // Check password
+            if (Hash::check($request->password, $user->password)) {
+                Auth::login($user);
+                $request->session()->regenerate();
+
+                return redirect()->intended('/dashboard')->with(
+                    'toast_success',
+                    'Login Berhasil, Selamat Datang ' . ucfirst($user->username)
+                );
+            }
         }
 
+        // If user not found or password invalid
         return back()->with('toast_error', 'Login Gagal, Username atau Password salah!');
     }
 

@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('data_ibu', function (Blueprint $table) {
             $table->integer('id_data_ibu')->autoIncrement();
-            $table->integer('id_data_siswa');
-            $table->string('nik');
-            $table->string('nama');
-            $table->string('pekerjaan');
-            $table->string('pendidikan');
-            $table->string('no_telp');
+            $table->integer('id_data_siswa')->nullable();
+            $table->string('nik')->nullable();
+            $table->string('nama')->nullable();
+            $table->string('pekerjaan')->nullable();
+            $table->string('pendidikan')->nullable();
+            $table->string('no_telp')->nullable();
         });
     }
 

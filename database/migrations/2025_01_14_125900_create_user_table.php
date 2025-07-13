@@ -13,9 +13,11 @@ return new class extends Migration
     {
         Schema::create('user', function (Blueprint $table) {
             $table->integer('id')->autoIncrement();
+            $table->text('nama')->nullable();
+            $table->text('nisn')->nullable();
             $table->text('username');
-            $table->text('nama');
             $table->text('password');
+            $table->integer('is_siswa');
             $table->integer('is_admin');
         });
     }

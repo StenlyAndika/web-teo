@@ -13,16 +13,16 @@ return new class extends Migration
     {
         Schema::create('data_siswa', function (Blueprint $table) {
             $table->integer('id_data_siswa')->autoIncrement();
-            $table->string('nisn');
-            $table->string('nik');
-            $table->string('nama');
-            $table->string('panggilan');
-            $table->string('tempat_lahir');
-            $table->date('tgl_lahir');
-            $table->string('jekel');
-            $table->string('alamat');
-            $table->string('asal_sekolah');
-            $table->string('no_telp');
+            $table->string('nisn')->nullable();
+            $table->string('nik')->nullable();
+            $table->string('nama')->nullable();
+            $table->string('panggilan')->nullable();
+            $table->string('tempat_lahir')->nullable();
+            $table->date('tgl_lahir')->nullable();
+            $table->string('jekel')->nullable();
+            $table->string('alamat')->nullable();
+            $table->string('asal_sekolah')->nullable();
+            $table->string('no_telp')->nullable();
         });
     }
 
