@@ -10,7 +10,7 @@ class UserController extends Controller
     public function index()
     {
         return view('dashboard.siswa.index', [
-            'title' => 'Data User',
+            'title' => 'Data Akun Siswa',
             'user' => User::where('is_admin', 0)->get(),
         ]);
     }
@@ -39,7 +39,7 @@ class UserController extends Controller
         $validatedDataUser['is_siswa'] = 2;
 
         User::where('nisn', $nisn)->update($validatedDataUser);
-        
+
         return redirect()->route('admin.user.index')->with('toast_success', 'Akun tidak diverifikasi!');
     }
 }
