@@ -13,10 +13,9 @@
 </head>
 
 <body>
-    @include('partials.header')
-    <div class="w-full p-4 text-center bg-white border border-gray-200 rounded-lg shadow">
-        @yield('container')
-    </div>
+    {{-- @include('partials.header') --}}
+    {{-- <div class="w-full p-4 text-center bg-white border border-gray-200 rounded-lg shadow"> --}}
+    @yield('container')
 
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@9.0.3"></script>
